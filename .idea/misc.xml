@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/edittext_style.xml" value="0.1" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_login.xml" value="0.14210526315789473" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_sign_up.xml" value="0.1569767441860465" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/main_activity_menu.xml" value="0.21774193548387097" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
