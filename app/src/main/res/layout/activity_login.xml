@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".Login">
 
     <LinearLayout
@@ -30,9 +30,9 @@
             android:background="@drawable/edittext_style"
             android:ems="10"
             android:hint="Enter Email/ Number"
-            android:textColor="@color/black"
             android:inputType="textEmailAddress"
             android:padding="5dp"
+            android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
 
         <EditText
@@ -43,9 +43,9 @@
             android:background="@drawable/edittext_style"
             android:ems="10"
             android:hint="Enter Password"
-            android:textColor="@color/black"
             android:inputType="textPassword"
             android:padding="9dp"
+            android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
 
         <TextView
@@ -61,10 +61,10 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="15dp"
             android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white"
+            android:padding="15dp"
             android:text="Login"
+            android:textColor="@color/white"
             app:cornerRadius="4dp" />
 
     </LinearLayout>
@@ -79,29 +79,40 @@
             android:id="@+id/google_btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:drawableLeft="@drawable/ic_google__1_"
             android:padding="15dp"
             android:text="Google"
-            android:layout_marginLeft="15dp"
             android:textColor="@color/white"
             app:cornerRadius="4dp" />
 
-        <Button
+        <com.facebook.login.widget.LoginButton
             android:id="@+id/facebook_btn_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/fb_color"
-            android:drawableLeft="@drawable/ic_facebook"
-            android:padding="15dp"
+            android:layout_gravity="center"
             android:layout_marginRight="15dp"
-            android:textColor="@color/white"
-            android:text="Facebook"
+            android:layout_weight="1"
+            android:padding="15dp"
             app:cornerRadius="4dp" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/facebook_btn_login"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="4dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:backgroundTint="@color/fb_color"-->
+        <!--            android:drawableLeft="@drawable/ic_facebook"-->
+        <!--            android:padding="15dp"-->
+        <!--            android:layout_marginRight="15dp"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:text="Facebook"-->
+        <!--            app:cornerRadius="4dp" />-->
 
     </LinearLayout>
 

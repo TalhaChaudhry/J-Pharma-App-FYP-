@@ -52,4 +52,7 @@ dependencies {
 
     // Google Login Service
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
+
+    // facebook login sdk
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 }

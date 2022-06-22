@@ -10,6 +10,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.talhachaudhry.jpharmaappfyp.Models.User;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityLoginBinding;
 
+import java.util.Arrays;
+
 public class Login extends AppCompatActivity {
 
     ActivityLoginBinding binding;
@@ -33,6 +39,8 @@ public class Login extends AppCompatActivity {
     FirebaseAuth auth;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseDatabase database;
+    CallbackManager callbackManager;
+    private static final String EMAIL = "email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,7 @@ public class Login extends AppCompatActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
         auth = FirebaseAuth.getInstance();
+        callbackManager = CallbackManager.Factory.create();
         database = FirebaseDatabase.getInstance();
         progressDialog = new ProgressDialog(Login.this);
         progressDialog.setTitle("Login");
@@ -51,7 +60,32 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        binding.facebookBtnLogin.setReadPermissions("email", "public_profile", "user_friends");
+//        binding.facebookBtnLogin.setReadPermissions(Arrays.asList(EMAIL));
+        // If you are using in a fragment, call loginButton.setFragment(this);
 
+        // Callback registration
+        binding.facebookBtnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                startActivity(new Intent(Login.this, MainActivity.class));
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                Toast.makeText(Login.this, "Try other Method", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Toast.makeText(Login.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("FB", exception.getLocalizedMessage());
+                Log.e("FB", exception.getMessage());
+            }
+        });
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
