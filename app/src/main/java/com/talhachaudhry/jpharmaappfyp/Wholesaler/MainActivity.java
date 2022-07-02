@@ -1,54 +1,116 @@
 package com.talhachaudhry.jpharmaappfyp.Wholesaler;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.talhachaudhry.jpharmaappfyp.Adapter.CustomMenuAdapter;
 import com.talhachaudhry.jpharmaappfyp.LoginDetails.Login;
+
 import com.talhachaudhry.jpharmaappfyp.R;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.fragments.MainFragment;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
+import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
+
+public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMenuClickListener {
 
     ActivityMainBinding binding;
     FirebaseAuth auth;
+    private DuoMenuView mDuoMenuView;
+    CustomMenuAdapter mMenuAdapter;
+    ArrayList<String> menuList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().hide();
         auth = FirebaseAuth.getInstance();
+        mDuoMenuView = (DuoMenuView) binding.drawer.getMenuView();
+        setMenuList();
+        handleMenu();
+        handleDrawer();
+        goToFragment(MainFragment.newInstance(), false);
+    }
+
+    private void setMenuList() {
+        menuList.add("Profile");
+        menuList.add("Privacy Policy");
+        menuList.add("Invoice");
+        menuList.add("FQA");
+    }
+
+    private void handleMenu() {
+        mMenuAdapter = new CustomMenuAdapter(menuList);
+        mDuoMenuView.setOnMenuClickListener(this);
+        mDuoMenuView.setAdapter(mMenuAdapter);
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main_activity_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+    public void onFooterClicked() {
+        auth.signOut();
+        finish();
+        startActivity(new Intent(MainActivity.this, Login.class));
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                auth.signOut();
-                finish();
-                startActivity(new Intent(MainActivity.this, Login.class));
+    public void onHeaderClicked() {
+
+    }
+
+    @Override
+    public void onOptionClicked(int position, Object objectClicked) {
+        setTitle("J Pharma");
+
+        mMenuAdapter.setViewSelected(position, true);
+
+        switch (position) {
+            default:
+                goToFragment(new MainFragment(), false);
                 break;
         }
-        return true;
+        binding.drawer.closeDrawer();
+    }
+
+    private void goToFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+
+        transaction.add(R.id.container, fragment).commit();
+    }
+
+    private void handleDrawer() {
+        DuoDrawerToggle duoDrawerToggle = new DuoDrawerToggle(this,
+                binding.drawer,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        binding.drawer.setDrawerListener(duoDrawerToggle);
+        duoDrawerToggle.syncState();
     }
 
     @Override
     public void onBackPressed() {
-        this.finishAffinity();
+        if (!getSupportFragmentManager().popBackStackImmediate()) {
+            this.finishAffinity();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -70,16 +70,16 @@
             android:text="Already Have Account"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/sign_up_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="15dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white"
-            android:text="Sign Up"
-            app:cornerRadius="4dp" />
+<!--        <Button-->
+<!--            android:id="@+id/sign_up_btn"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:padding="15dp"-->
+<!--            android:backgroundTint="@color/colorPrimary"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Sign Up"-->
+<!--            app:cornerRadius="4dp" />-->
 
     </LinearLayout>
 
@@ -92,7 +92,7 @@
         <Button
             android:id="@+id/google_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
@@ -104,28 +104,19 @@
             app:cornerRadius="4dp" />
 
         <Button
-            android:id="@+id/facebook_btn"
+            android:id="@+id/sign_up_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="4dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/fb_color"
-            android:drawableLeft="@drawable/ic_facebook"
+            android:drawableLeft="@drawable/gmail"
+            android:backgroundTint="@android:color/darker_gray"
             android:padding="15dp"
-            android:layout_marginRight="15dp"
+            android:text="Sign Up"
             android:textColor="@color/white"
-            android:text="Facebook"
             app:cornerRadius="4dp" />
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Sign Up with Phone"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
 </LinearLayout>

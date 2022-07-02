@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="fb_color">#3c5793</color>
     <color name="lightGrey">#EDEDED</color>
-    <color name="colorPrimary">#0b6156</color>
+    <color name="colorPrimary">#B42B51</color>
+    <color name="colorSecondary">#7D1935</color>
+    <color name="colorVariant">#420516</color>
 </resources>

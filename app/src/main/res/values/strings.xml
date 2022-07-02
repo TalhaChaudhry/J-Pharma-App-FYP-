@@ -13,6 +13,10 @@
     <string name="facebook_app_id">735601424432499</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">891acf797f628eda3ac44c801d7cb1bd</string>
+    <string name="navigation_drawer_open">Open Menu</string>
+    <string name="navigation_drawer_close">Close Menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

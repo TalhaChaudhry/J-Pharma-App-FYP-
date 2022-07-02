@@ -10,10 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,7 +36,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth auth;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseDatabase database;
-    CallbackManager callbackManager;
+//    CallbackManager callbackManager;
     private static final String EMAIL = "email";
 
     @Override
@@ -50,7 +46,7 @@ public class Login extends AppCompatActivity {
         setContentView(binding.getRoot());
         getSupportActionBar().hide();
         auth = FirebaseAuth.getInstance();
-        callbackManager = CallbackManager.Factory.create();
+//        callbackManager = CallbackManager.Factory.create();
         database = FirebaseDatabase.getInstance();
         progressDialog = new ProgressDialog(Login.this);
         progressDialog.setTitle("Login");
@@ -61,65 +57,70 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        binding.facebookBtnLogin.setReadPermissions("email", "public_profile", "user_friends");
+//        binding.facebookBtnLogin.setReadPermissions("email", "public_profile", "user_friends");
 //        binding.facebookBtnLogin.setReadPermissions(Arrays.asList(EMAIL));
         // If you are using in a fragment, call loginButton.setFragment(this);
 
         // Callback registration
-        binding.facebookBtnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                startActivity(new Intent(Login.this, MainActivity.class));
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-                Toast.makeText(Login.this, "Try other Method", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-                Toast.makeText(Login.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("FB", exception.getLocalizedMessage());
-                Log.e("FB", exception.getMessage());
-            }
-        });
+//        binding.facebookBtnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                // App code
+//                startActivity(new Intent(Login.this, MainActivity.class));
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                // App code
+//                Toast.makeText(Login.this, "Try other Method", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onError(FacebookException exception) {
+//                // App code
+//                Toast.makeText(Login.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+//                Log.e("FB", exception.getLocalizedMessage());
+//                Log.e("FB", exception.getMessage());
+//            }
+//        });
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.show();
-                try {
-                    auth.signInWithEmailAndPassword(binding.EmailLogin.getText().toString().trim(), binding.PasswordLogin.getText().toString()).
-                            addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressDialog.dismiss();
-                                    FirebaseUser verify = auth.getCurrentUser();
-                                    if (task.isSuccessful()) {
-                                        if (verify.isEmailVerified()) {
-                                            startActivity(new Intent(Login.this, AdminActivity.class));
+                if (binding.EmailLogin.getText().toString().equals("Admin") &&
+                        binding.PasswordLogin.getText().toString().equals("1234567")) {
+                    startActivity(new Intent(Login.this, AdminActivity.class));
+                } else {
+                    progressDialog.show();
+                    try {
+                        auth.signInWithEmailAndPassword(binding.EmailLogin.getText().toString().trim(), binding.PasswordLogin.getText().toString()).
+                                addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        progressDialog.dismiss();
+                                        FirebaseUser verify = auth.getCurrentUser();
+                                        if (task.isSuccessful()) {
+                                            if (verify.isEmailVerified()) {
+                                                startActivity(new Intent(Login.this, MainActivity.class));
+                                            } else {
+                                                Toast.makeText(Login.this, "Verify your Email to login", Toast.LENGTH_SHORT).show();
+                                            }
                                         } else {
-                                            Toast.makeText(Login.this, "Verify your Email to login", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
-                                    } else {
-                                        Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                                     }
+                                });
+                    } catch (Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
-                                }
-                            });
-                } catch (Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(Login.this, "Above Fields Cannot be Empty", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(Login.this, AdminActivity.class));
+            startActivity(new Intent(Login.this, MainActivity.class));
         }
 
         binding.signUpTv.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +179,7 @@ public class Login extends AppCompatActivity {
                             users.setName(user.getDisplayName());
                             users.setProfilePic(user.getPhotoUrl().toString());
                             database.getReference().child("Users").child(user.getUid()).setValue(users);
-                            startActivity(new Intent(Login.this, AdminActivity.class));
+                            startActivity(new Intent(Login.this, MainActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

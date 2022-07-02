@@ -51,18 +51,17 @@ public class AdminActivity extends AppCompatActivity implements OnItemClicked {
     public void setOnItemClicked(String itemName, int position) {
         switch (position) {
             case 0:
-                Toast.makeText(this, "Clicked on Manage Medicine", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ManageMedicineActivity.class));
                 break;
             case 1:
-                Toast.makeText(this, "Clicked on Manage Order", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ManageOrdersActivity.class));
                 break;
             case 2:
-                Toast.makeText(this, "Clicked on View Wholesaler", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ViewWholesalerActivity.class));
                 break;
             case 3:
-                Toast.makeText(this, "Clicked on Sales Report", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ViewWholesalerActivity.class));
                 break;
-
         }
     }
 

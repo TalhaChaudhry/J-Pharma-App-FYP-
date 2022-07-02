@@ -56,17 +56,6 @@
             android:text="Create an Account"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:padding="15dp"
-            android:text="Login"
-            android:textColor="@color/white"
-            app:cornerRadius="4dp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +67,7 @@
         <Button
             android:id="@+id/google_btn_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
@@ -89,16 +78,20 @@
             android:textColor="@color/white"
             app:cornerRadius="4dp" />
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/facebook_btn_login"
+        <Button
+            android:id="@+id/login_btn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="4dp"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/gmail"
+            android:backgroundTint="@android:color/darker_gray"
             android:padding="15dp"
+            android:text="Login"
+            android:textColor="@color/white"
             app:cornerRadius="4dp" />
+
 
         <!--        <Button-->
         <!--            android:id="@+id/facebook_btn_login"-->
