@@ -1,4 +1,4 @@
-package com.talhachaudhry.jpharmaappfyp;
+package com.talhachaudhry.jpharmaappfyp.LoginDetails;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -27,10 +27,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+import com.talhachaudhry.jpharmaappfyp.Admin.AdminActivity;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.MainActivity;
 import com.talhachaudhry.jpharmaappfyp.Models.User;
+import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityLoginBinding;
-
-import java.util.Arrays;
 
 public class Login extends AppCompatActivity {
 
@@ -56,7 +57,7 @@ public class Login extends AppCompatActivity {
         progressDialog.setMessage("Logging in to your account");
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("341451991468-pu129u4amf23jaf8ll2rh0ok9det9gjl.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -99,7 +100,7 @@ public class Login extends AppCompatActivity {
                                     FirebaseUser verify = auth.getCurrentUser();
                                     if (task.isSuccessful()) {
                                         if (verify.isEmailVerified()) {
-                                            startActivity(new Intent(Login.this, MainActivity.class));
+                                            startActivity(new Intent(Login.this, AdminActivity.class));
                                         } else {
                                             Toast.makeText(Login.this, "Verify your Email to login", Toast.LENGTH_SHORT).show();
                                         }
@@ -118,7 +119,7 @@ public class Login extends AppCompatActivity {
         });
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(Login.this, MainActivity.class));
+            startActivity(new Intent(Login.this, AdminActivity.class));
         }
 
         binding.signUpTv.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +178,7 @@ public class Login extends AppCompatActivity {
                             users.setName(user.getDisplayName());
                             users.setProfilePic(user.getPhotoUrl().toString());
                             database.getReference().child("Users").child(user.getUid()).setValue(users);
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            startActivity(new Intent(Login.this, AdminActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

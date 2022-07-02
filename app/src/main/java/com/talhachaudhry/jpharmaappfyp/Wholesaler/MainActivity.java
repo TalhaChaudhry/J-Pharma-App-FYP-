@@ -1,4 +1,4 @@
-package com.talhachaudhry.jpharmaappfyp;
+package com.talhachaudhry.jpharmaappfyp.Wholesaler;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.talhachaudhry.jpharmaappfyp.LoginDetails.Login;
+import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

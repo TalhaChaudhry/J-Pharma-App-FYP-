@@ -5,10 +5,15 @@
       <map>
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/edittext_style.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_admin.xml" value="0.12272727272727273" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_medicine.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_orders.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_sign_up.xml" value="0.1569767441860465" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_view_wholesaler.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_dashboard_menu.xml" value="0.22" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/main_activity_menu.xml" value="0.21774193548387097" />
       </map>
     </option>

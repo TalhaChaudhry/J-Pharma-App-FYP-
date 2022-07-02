@@ -1,4 +1,4 @@
-package com.talhachaudhry.jpharmaappfyp;
+package com.talhachaudhry.jpharmaappfyp.LoginDetails;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -60,7 +60,7 @@ public class SignUp extends AppCompatActivity {
                                             public void onSuccess(Void aVoid) {
                                                 database.getReference().child("Users").child(id).setValue(user);
                                                 Toast.makeText(SignUp.this, "User created, Verify your email to login", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(),Login.class));
+                                            startActivity(new Intent(getApplicationContext(), Login.class));
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
