@@ -15,5 +15,6 @@ public class ManageOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityManageOrdersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setTitle("Manage Orders");
     }
 }

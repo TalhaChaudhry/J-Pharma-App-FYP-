@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
 
     private void setMenuList() {
         menuList.add("Profile");
-        menuList.add("Privacy Policy");
         menuList.add("Invoice");
-        menuList.add("FQA");
+        menuList.add("Privacy Policy");
+        menuList.add("FAQ");
     }
 
     private void handleMenu() {

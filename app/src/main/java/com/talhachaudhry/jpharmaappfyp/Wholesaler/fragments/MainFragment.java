@@ -1,5 +1,6 @@
 package com.talhachaudhry.jpharmaappfyp.Wholesaler.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,20 +14,16 @@ import com.talhachaudhry.jpharmaappfyp.Adapter.ItemsRecyclerAdapter;
 import com.talhachaudhry.jpharmaappfyp.Callbacks.OnItemClicked;
 import com.talhachaudhry.jpharmaappfyp.Models.ItemsModel;
 import com.talhachaudhry.jpharmaappfyp.R;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.EditOrderActivity;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.OrdersHistoryActivity;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.PendingOrdersActivity;
+import com.talhachaudhry.jpharmaappfyp.Wholesaler.PlaceOrderActivity;
 import com.talhachaudhry.jpharmaappfyp.databinding.FragmentMainBinding;
 
 import java.util.ArrayList;
 
-public class MainFragment extends Fragment  implements OnItemClicked {
+public class MainFragment extends Fragment implements OnItemClicked {
 
-
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-
-
-//    private String mParam1;
-//    private String mParam2;
 
     FragmentMainBinding binding;
     ArrayList<ItemsModel> list = new ArrayList<>();
@@ -38,29 +35,19 @@ public class MainFragment extends Fragment  implements OnItemClicked {
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         binding = FragmentMainBinding.inflate(inflater, container, false);
-
-
         setList();
         adapter = new ItemsRecyclerAdapter(getContext(), list, this);
         binding.wholesalerRv.setAdapter(adapter);
@@ -78,16 +65,16 @@ public class MainFragment extends Fragment  implements OnItemClicked {
     public void setOnItemClicked(String itemName, int position) {
         switch (position) {
             case 0:
-                Toast.makeText(getContext(), "Clicked on Place Order", Toast.LENGTH_SHORT).show();
+                getContext().startActivity(new Intent(getContext(), PlaceOrderActivity.class));
                 break;
             case 1:
-                Toast.makeText(getContext(), "Clicked on Edit Order", Toast.LENGTH_SHORT).show();
+                getContext().startActivity(new Intent(getContext(), EditOrderActivity.class));
                 break;
             case 2:
-                Toast.makeText(getContext(), "Clicked on Pending Orders", Toast.LENGTH_SHORT).show();
+                getContext().startActivity(new Intent(getContext(), PendingOrdersActivity.class));
                 break;
             case 3:
-                Toast.makeText(getContext(), "Clicked on Orders History", Toast.LENGTH_SHORT).show();
+                getContext().startActivity(new Intent(getContext(), OrdersHistoryActivity.class));
                 break;
         }
     }

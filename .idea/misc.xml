@@ -7,16 +7,20 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_google__1_.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_admin.xml" value="0.12272727272727273" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_edit_order.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.10384615384615385" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_medicine.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_orders.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_pending_orders.xml" value="0.22708333333333333" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_place_order.xml" value="0.10975609756097561" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_sign_up.xml" value="0.1569767441860465" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_view_wholesaler.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/drawer_footer.xml" value="0.22131147540983606" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_main.xml" value="0.10384615384615385" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_dashboard_menu.xml" value="0.22" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_placeorder_item.xml" value="0.14136125654450263" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/side_drawer_header.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/main_activity_menu.xml" value="0.21774193548387097" />
       </map>

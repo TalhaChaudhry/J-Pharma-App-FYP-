@@ -15,5 +15,6 @@ public class ManageMedicineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityManageMedicineBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setTitle("Manage Medicine");
     }
 }

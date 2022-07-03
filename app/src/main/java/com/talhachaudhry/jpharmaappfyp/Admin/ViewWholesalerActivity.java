@@ -15,5 +15,6 @@ public class ViewWholesalerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewWholesalerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setTitle("View Wholesaler");
     }
 }

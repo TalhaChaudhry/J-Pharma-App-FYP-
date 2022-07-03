@@ -19,6 +19,18 @@
         android:theme="@style/Theme.JPharmaAppFYP"
         tools:targetApi="31">
         <activity
+            android:name=".Wholesaler.OrdersHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Wholesaler.PendingOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Wholesaler.EditOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Wholesaler.PlaceOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".Admin.ViewWholesalerActivity"
             android:exported="false" />
         <activity
