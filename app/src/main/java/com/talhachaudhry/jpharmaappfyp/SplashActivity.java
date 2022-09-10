@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
-import com.talhachaudhry.jpharmaappfyp.LoginDetails.Login;
+import com.talhachaudhry.jpharmaappfyp.login_details.Login;
 
 public class SplashActivity extends AppCompatActivity {
 

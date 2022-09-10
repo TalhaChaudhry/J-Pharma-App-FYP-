@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".LoginDetails.SignUp">
+    tools:context=".login_details.SignUp">
 
 
     <LinearLayout

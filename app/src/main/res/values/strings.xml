@@ -17,6 +17,20 @@
     <string name="navigation_drawer_close">Close Menu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_the_image_path">Enter the Image URL</string>
+    <string name="enter_the_medicine_detail">Enter the Medicine Detail</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="enter_the_medicine_name">Enter the Medicine Name</string>
+    <string name="enter_the_mg">Enter the mg</string>
+    <string name="enter_the_price">Enter the Price</string>
+    <string name="manage_medicine">Manage Medicine</string>
+    <string name="medicine_name">Medicine Name:</string>
+    <string name="medicine_mg">Medicine Mg:</string>
+    <string name="medicine_price">Medicine Price:</string>
+    <string name="medicine_details">Medicine Details:</string>
+    <string name="medicine_details_title">Medicine Details</string>
+    <string name="image_url">Image URL :</string>
+    <string name="edit_medicine_title">Edit Medicine</string>
 
 
 </resources>

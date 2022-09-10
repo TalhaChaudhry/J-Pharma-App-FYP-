@@ -19,28 +19,28 @@
         android:theme="@style/Theme.JPharmaAppFYP"
         tools:targetApi="31">
         <activity
-            android:name=".Wholesaler.OrdersHistoryActivity"
+            android:name=".wholesaler.OrdersHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Wholesaler.PendingOrdersActivity"
+            android:name=".wholesaler.PendingOrdersActivity"
             android:exported="false" />
         <activity
-            android:name=".Wholesaler.EditOrderActivity"
+            android:name=".wholesaler.EditOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".Wholesaler.PlaceOrderActivity"
+            android:name=".wholesaler.PlaceOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.ViewWholesalerActivity"
+            android:name=".admin.ViewWholesalerActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.ManageOrdersActivity"
+            android:name=".admin.ManageOrdersActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.ManageMedicineActivity"
+            android:name=".admin.ManageMedicineActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AdminActivity"
+            android:name=".admin.AdminActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -52,13 +52,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginDetails.Login"
+            android:name=".login_details.Login"
             android:exported="false" />
         <activity
-            android:name=".LoginDetails.SignUp"
+            android:name=".login_details.SignUp"
             android:exported="false" />
         <activity
-            android:name=".Wholesaler.MainActivity"
+            android:name=".wholesaler.MainActivity"
             android:exported="false" />
         <activity
             android:name="com.facebook.FacebookActivity"
