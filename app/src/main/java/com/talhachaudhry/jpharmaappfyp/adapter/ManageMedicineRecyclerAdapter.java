@@ -50,7 +50,7 @@ public class ManageMedicineRecyclerAdapter extends ListAdapter<ManageMedicineMod
                 callback.onViewMedicineDetailClicked(getItem(holder.getAdapterPosition())));
     }
 
-    private static class DiffUtils extends DiffUtil.ItemCallback<ManageMedicineModel> {
+    public static class DiffUtils extends DiffUtil.ItemCallback<ManageMedicineModel> {
 
         @Override
         public boolean areItemsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) {

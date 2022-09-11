@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wholesaler.PlaceOrderActivity">
-
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".wholesaler.fragments.CartFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
@@ -26,77 +28,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/place_order_title"
+            android:text="@string/cart"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
-        android:id="@+id/search_layout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar">
-
-        <AutoCompleteTextView
-            android:id="@+id/search_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="Enter Medicine Name to Search"
-            android:padding="7dp" />
-
-        <ImageView
-            android:id="@+id/search_btn"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/search_icon" />
-    </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/place_order_rv"
+        android:id="@+id/cart_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        tools:listitem="@layout/sample_item_cart"
         app:layout_constraintBottom_toTopOf="@+id/cart_frame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_layout"
-        tools:listitem="@layout/sample_placeorder_item" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     <FrameLayout
         android:id="@+id/cart_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/view_cart_btn"
+            android:id="@+id/place_order_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/icons_bg"
             android:gravity="center"
-            android:text="@string/view_cart"
+            android:text="@string/place_order"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </FrameLayout>
 
-    <RelativeLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

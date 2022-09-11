@@ -1,24 +1,39 @@
 package com.talhachaudhry.jpharmaappfyp.wholesaler;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
+import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.MedicineAdapter;
 import com.talhachaudhry.jpharmaappfyp.callbacks.OnItemClicked;
+import com.talhachaudhry.jpharmaappfyp.callbacks.OnViewMedicineDetail;
+import com.talhachaudhry.jpharmaappfyp.models.ManageMedicineModel;
 import com.talhachaudhry.jpharmaappfyp.models.MedicineModel;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityPlaceOrderBinding;
+import com.talhachaudhry.jpharmaappfyp.view_models.ManageMedicineViewModel;
+import com.talhachaudhry.jpharmaappfyp.view_models.PlaceOrderViewModel;
+import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.AddToCartFragment;
+import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.CartFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
-public class PlaceOrderActivity extends AppCompatActivity implements OnItemClicked {
+public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedicineDetail {
 
     ActivityPlaceOrderBinding binding;
-    ArrayList<MedicineModel> list = new ArrayList<>();
     MedicineAdapter adapter;
+    ManageMedicineViewModel viewModel;
+    PlaceOrderViewModel placeOrderViewModel;
     String[] languages = {"Panadol", "Disprin", "Paracitamol", "Bruffin", "Vagra", "Vitamins"};
     ArrayAdapter arrayAdapter;
 
@@ -28,48 +43,53 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnItemClick
         super.onCreate(savedInstanceState);
         binding = ActivityPlaceOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().setTitle("Place Order");
-        setList();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+        viewModel = new ViewModelProvider(this).get(ManageMedicineViewModel.class);
+        placeOrderViewModel = new ViewModelProvider(this).get(PlaceOrderViewModel.class);
+        placeOrderViewModel.getCartList().observe(this, cartModels -> {
+            if (!cartModels.isEmpty()) {
+                binding.cartFrame.setVisibility(View.VISIBLE);
+            } else {
+                binding.cartFrame.setVisibility(View.GONE);
+            }
+        });
+        binding.viewCartBtn.setOnClickListener(view ->
+                openFragment(CartFragment.newInstance(), R.id.fragment_container));
         arrayAdapter = new
                 ArrayAdapter(this, android.R.layout.simple_list_item_1, languages);
         binding.searchEt.setAdapter(arrayAdapter);
         binding.searchEt.setThreshold(1);
-        adapter = new MedicineAdapter(this, list, this);
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
+        adapter = new MedicineAdapter(this, this);
         binding.placeOrderRv.setAdapter(adapter);
-        binding.searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int pos = Arrays.asList(languages).indexOf(binding.searchEt.getText().toString().trim());
-                binding.placeOrderRv.scrollToPosition(pos);
-            }
+        viewModel.getManageMedicineViewModelMutableLiveData().observe(this, manageMedicineModels ->
+                adapter.submitList(manageMedicineModels));
+        binding.searchBtn.setOnClickListener(view -> {
+            int pos = Arrays.asList(languages).indexOf(binding.searchEt.getText().toString().trim());
+            binding.placeOrderRv.scrollToPosition(pos);
         });
-
     }
 
-    public void setList() {
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4OVZowtZ3QpQ98SXGx9OmnQX0GmlA9gpPcg&usqp=CAU",
-                "Panadol",
-                "It is a very good medicine Order ot to get it "));
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfK78VoAG1xxxz4y7NjWQBbBZRN6RGSpkzlQ&usqp=CAU",
-                "Disprin",
-                "It is a very good medicine Order ot to get it "));
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUf2TZ_hzM_w0F8t-LvMtFmMOIzZLiel-A1g&usqp=CAU",
-                "Paracitamol",
-                "It is a very good medicine Order ot to get it "));
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZUt-p16rR8YKK9g-sI9mSd4H4HXB4JLxJGg&usqp=CAU",
-                "Bruffin",
-                "It is a very good medicine Order ot to get it "));
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_MJk865wCm-EZdkafiSyCGjdG7Sf9puHevA&usqp=CAU",
-                "Vagra",
-                "It is a very good medicine Order ot to get it "));
-        list.add(new MedicineModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVGZ6SgDbGoTZU6p_F6RxxApX24W-hB8Vcyw&usqp=CAU",
-                "Vitamins",
-                "It is a very good medicine Order ot to get it "));
-
+    private void openFragment(@NonNull Fragment fragment, @IdRes int container) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
-    public void setOnItemClicked(String itemName, int position) {
+    public void onViewMedicineDetailClicked(ManageMedicineModel model) {
+        openFragment(AddToCartFragment.newInstance(model), R.id.fragment_container);
+    }
 
+    @Override
+    public void deleteMedicine(ManageMedicineModel model) {
+        // do nothing
+    }
+
+    @Override
+    public void updateMedicine(ManageMedicineModel model) {
+        // do nothing
     }
 }

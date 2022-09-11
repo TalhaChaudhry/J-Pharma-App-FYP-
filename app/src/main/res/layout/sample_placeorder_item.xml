@@ -45,22 +45,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="25dp"
                     android:text="Medicine Name"
-                    android:textSize="25dp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/medicine_detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center"
                     android:layout_marginRight="5dp"
-                    android:maxLines="5"
+                    android:maxLines="3"
                     android:text="Medicine Details Here"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:textStyle="normal" />
             </LinearLayout>
         </LinearLayout>

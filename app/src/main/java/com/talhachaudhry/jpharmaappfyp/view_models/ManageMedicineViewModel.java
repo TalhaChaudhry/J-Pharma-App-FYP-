@@ -80,7 +80,7 @@ public class ManageMedicineViewModel extends ViewModel {
     }
 
     private void updateList(ManageMedicineModel model) {
-        if (getManageMedicineViewModelMutableLiveData() != null) {
+        if (manageMedicineModelMutableLiveData != null) {
             List<ManageMedicineModel> list = new ArrayList<>
                     (Objects.requireNonNull(manageMedicineModelMutableLiveData.getValue()));
             list.add(model);
@@ -101,7 +101,7 @@ public class ManageMedicineViewModel extends ViewModel {
                                         child(NODE_NAME).
                                         child(Objects.requireNonNull(snapshot1.getKey())).
                                         removeValue().addOnCompleteListener(runnable -> {
-                                            if (getManageMedicineViewModelMutableLiveData() != null) {
+                                            if (manageMedicineModelMutableLiveData != null) {
                                                 List<ManageMedicineModel> list =
                                                         new ArrayList<>(Objects.
                                                                 requireNonNull(manageMedicineModelMutableLiveData.

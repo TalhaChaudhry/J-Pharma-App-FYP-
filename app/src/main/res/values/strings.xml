@@ -46,6 +46,12 @@
     <string name="enter_password">Enter Password</string>
     <string name="already_have_account">Already Have Account</string>
     <string name="enter_city_name">Enter City Name</string>
+    <string name="place_order_title">Place Order</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="view_cart">View Cart</string>
+    <string name="cart">Cart</string>
+    <string name="place_order">Place Order</string>
+    <string name="date_time_format">dd/MM/yyyy HH:mm:ss</string>
 
 
 </resources>

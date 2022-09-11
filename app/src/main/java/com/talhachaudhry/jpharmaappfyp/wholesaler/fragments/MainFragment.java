@@ -3,6 +3,7 @@ package com.talhachaudhry.jpharmaappfyp.wholesaler.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -28,22 +29,13 @@ public class MainFragment extends Fragment implements OnItemClicked {
     ArrayList<ItemsModel> list = new ArrayList<>();
     ItemsRecyclerAdapter adapter;
 
-    public MainFragment() {
-        // Required empty public constructor
-    }
 
     public static MainFragment newInstance() {
-        MainFragment fragment = new MainFragment();
-        return fragment;
+        return new MainFragment();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentMainBinding.inflate(inflater, container, false);
@@ -64,16 +56,18 @@ public class MainFragment extends Fragment implements OnItemClicked {
     public void setOnItemClicked(String itemName, int position) {
         switch (position) {
             case 0:
-                getContext().startActivity(new Intent(getContext(), PlaceOrderActivity.class));
+                requireActivity().startActivity(new Intent(getContext(), PlaceOrderActivity.class));
                 break;
             case 1:
-                getContext().startActivity(new Intent(getContext(), EditOrderActivity.class));
+                requireActivity().startActivity(new Intent(getContext(), EditOrderActivity.class));
                 break;
             case 2:
-                getContext().startActivity(new Intent(getContext(), PendingOrdersActivity.class));
+                requireActivity().startActivity(new Intent(getContext(), PendingOrdersActivity.class));
                 break;
             case 3:
-                getContext().startActivity(new Intent(getContext(), OrdersHistoryActivity.class));
+                requireActivity().startActivity(new Intent(getContext(), OrdersHistoryActivity.class));
+                break;
+            default:
                 break;
         }
     }

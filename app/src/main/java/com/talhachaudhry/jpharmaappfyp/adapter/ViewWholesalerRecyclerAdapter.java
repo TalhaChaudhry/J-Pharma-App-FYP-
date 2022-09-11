@@ -20,7 +20,6 @@ public class ViewWholesalerRecyclerAdapter extends ListAdapter<UserModel, Recycl
     Context context;
     OnViewWholesalerClicked callback;
 
-
     public ViewWholesalerRecyclerAdapter(Context context, OnViewWholesalerClicked callback) {
         super(new DiffUtils());
         this.context = context;

@@ -22,7 +22,6 @@ public class ViewMedicineDetailsBottomSheet extends BottomSheetDialogFragment {
 
     FragmentBottomSheetDialogBinding binding;
     private static final String ARG_PARAM1 = "model";
-
     private ManageMedicineModel model;
 
     public static ViewMedicineDetailsBottomSheet newInstance(ManageMedicineModel model) {
