@@ -54,15 +54,12 @@ public class ManageMedicineRecyclerAdapter extends ListAdapter<ManageMedicineMod
 
         @Override
         public boolean areItemsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) {
-            return oldItem.getName().equals(newItem.getName());
+            return oldItem.hashCode() == newItem.hashCode();
         }
 
         @Override
         public boolean areContentsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) {
-            return (oldItem.getDetail().equals(newItem.getDetail())
-                    && oldItem.getImagePath().equals(newItem.getImagePath())
-                    && oldItem.getMg().equals(newItem.getMg()) &&
-                    oldItem.getPrice() == newItem.getPrice());
+            return oldItem.toString().equals(newItem.toString());
         }
     }
 }

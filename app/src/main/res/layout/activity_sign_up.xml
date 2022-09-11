@@ -1,105 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".login_details.SignUp">
 
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_google__1_" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_username"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_email_address"
+        android:inputType="textEmailAddress"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+    <EditText
+        android:id="@+id/shop_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_shop_name"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+    <EditText
+        android:id="@+id/address_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_shop_address"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_name_tv" />
+
+    <EditText
+        android:id="@+id/city_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_city_name"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_tv" />
+
+    <EditText
+        android:id="@+id/contact_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/edittext_style"
+        android:hint="@string/enter_contact_number"
+        android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_tv" />
+
+    <TextView
+        android:id="@+id/login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="right"
+        android:text="@string/already_have_account"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_tv" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="-30dp"
-            android:layout_marginBottom="-50dp"
-            app:srcCompat="@drawable/ic_google__1_" />
-
-        <EditText
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="9dp"
-            android:background="@drawable/edittext_style"
-            android:ems="10"
-            android:hint="Enter Username"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textColorHint="@android:color/darker_gray" />
-
-        <EditText
-            android:id="@+id/Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="9dp"
-            android:background="@drawable/edittext_style"
-            android:ems="10"
-            android:hint="Enter Email Address"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black"
-            android:padding="5dp"
-            android:textColorHint="@android:color/darker_gray" />
-
-        <EditText
-            android:id="@+id/Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edittext_style"
-            android:ems="10"
-            android:hint="Enter Password"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            android:padding="9dp"
-            android:textColorHint="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/login_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Already Have Account"
-            android:textStyle="bold" />
-
-<!--        <Button-->
-<!--            android:id="@+id/sign_up_btn"-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:padding="15dp"-->
-<!--            android:backgroundTint="@color/colorPrimary"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:text="Sign Up"-->
-<!--            app:cornerRadius="4dp" />-->
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_tv">
 
         <Button
             android:id="@+id/google_btn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:drawableLeft="@drawable/ic_google__1_"
             android:padding="15dp"
             android:text="Google"
-            android:layout_marginLeft="15dp"
             android:textColor="@color/white"
             app:cornerRadius="4dp" />
 
@@ -110,8 +177,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="4dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/gmail"
             android:backgroundTint="@android:color/darker_gray"
+            android:drawableLeft="@drawable/gmail"
             android:padding="15dp"
             android:text="Sign Up"
             android:textColor="@color/white"
@@ -119,4 +186,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

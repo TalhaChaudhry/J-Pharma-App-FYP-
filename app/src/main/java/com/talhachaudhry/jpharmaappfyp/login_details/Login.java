@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
 import com.talhachaudhry.jpharmaappfyp.admin.AdminActivity;
+import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.MainActivity;
 import com.talhachaudhry.jpharmaappfyp.models.User;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityLoginBinding;
@@ -128,10 +129,11 @@ public class Login extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
                         FirebaseUser user = auth.getCurrentUser();
-                        User users = new User();
-                        users.setUserId(user.getUid());
-                        users.setName(user.getDisplayName());
+                        UserModel users = new UserModel();
+                        users.setUserName(user.getDisplayName());
                         users.setProfilePic(user.getPhotoUrl().toString());
+                        users.setContact(user.getPhoneNumber());
+                        users.setAddress(user.getEmail());
                         database.getReference().child("Users").child(user.getUid()).setValue(users);
                         startActivity(new Intent(Login.this, MainActivity.class));
                     } else {

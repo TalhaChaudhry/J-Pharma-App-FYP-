@@ -3,6 +3,8 @@ package com.talhachaudhry.jpharmaappfyp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 public class ManageMedicineModel implements Parcelable {
     String imagePath;
     String detail;
@@ -96,5 +98,11 @@ public class ManageMedicineModel implements Parcelable {
         parcel.writeInt(price);
         parcel.writeString(mg);
         parcel.writeString(name);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

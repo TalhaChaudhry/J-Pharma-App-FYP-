@@ -76,9 +76,8 @@ public class AddMedicineFragment extends Fragment {
             @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                StringBuilder sb=new StringBuilder(charSequence);
                 Glide.with(requireActivity()).
-                        load(Uri.parse(sb.toString())).
+                        load(Uri.parse(String.valueOf(charSequence))).
                         placeholder(requireActivity().getDrawable(R.drawable.sample_image)).
                         into(binding.medicineImageView);
             }

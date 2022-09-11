@@ -53,13 +53,13 @@ dependencies {
     // Google Login Service
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
-    // facebook login sdk
-//    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
-
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
     // Animated Drawer
     implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
+
+    // For Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

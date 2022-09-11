@@ -31,6 +31,21 @@
     <string name="medicine_details_title">Medicine Details</string>
     <string name="image_url">Image URL :</string>
     <string name="edit_medicine_title">Edit Medicine</string>
+    <string name="view_wholesalers">View Wholesalers</string>
+    <string name="shop_name">Shop Name:</string>
+    <string name="city_name">City Name:</string>
+    <string name="shop_address">Address:</string>
+    <string name="wholesaler_detail">Wholesaler Detail</string>
+    <string name="user_name">User Name:</string>
+    <string name="contact_no">Contact No.:</string>
+    <string name="enter_shop_name">Enter Shop Name</string>
+    <string name="enter_shop_address">Enter Shop Address</string>
+    <string name="enter_contact_number">Enter Contact Number</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="already_have_account">Already Have Account</string>
+    <string name="enter_city_name">Enter City Name</string>
 
 
 </resources>
