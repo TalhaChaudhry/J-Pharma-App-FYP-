@@ -54,7 +54,7 @@ public class SignUp extends AppCompatActivity {
                                         binding.Name.getText().toString(),
                                         binding.Password.getText().toString(), binding.addressTv.getText().toString(),
                                         binding.cityTv.getText().toString(), binding.contactTv.getText().toString(),
-                                        binding.Email.getText().toString(), "");
+                                        binding.Email.getText().toString(), "", auth.getUid());
                                 FirebaseUser firebaseUser = auth.getCurrentUser();
                                 String id = task.getResult().getUser().getUid();
                                 firebaseUser.sendEmailVerification().addOnSuccessListener(aVoid -> {

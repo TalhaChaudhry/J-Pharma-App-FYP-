@@ -10,6 +10,9 @@ public class CartModel {
         this.model = model;
         this.quantity = quantity;
     }
+    public CartModel(){
+        // required for Firebase
+    }
 
     public ManageMedicineModel getModel() {
         return model;

@@ -134,6 +134,7 @@ public class Login extends AppCompatActivity {
                         users.setProfilePic(user.getPhotoUrl().toString());
                         users.setContact(user.getPhoneNumber());
                         users.setAddress(user.getEmail());
+                        users.setUserId(auth.getUid());
                         database.getReference().child("Users").child(user.getUid()).setValue(users);
                         startActivity(new Intent(Login.this, MainActivity.class));
                     } else {

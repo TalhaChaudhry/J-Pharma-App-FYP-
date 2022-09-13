@@ -9,10 +9,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
+import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +40,7 @@ public class PlaceOrderViewModel extends AndroidViewModel {
         if (liveData == null) {
             liveData = new MutableLiveData<>();
             liveData.setValue(new ArrayList<>());
-            auth=FirebaseAuth.getInstance();
+            auth = FirebaseAuth.getInstance();
             database = FirebaseDatabase.getInstance();
         }
         return liveData;
@@ -58,16 +62,34 @@ public class PlaceOrderViewModel extends AndroidViewModel {
         }
     }
 
+    private void orderForCurrentUser() {
+        database.getReference().child("Users").child(auth.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                makeOrder(snapshot.getValue(UserModel.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Do Nothing
+            }
+        });
+    }
+
     public void placeOrder() {
+        orderForCurrentUser();
+    }
+
+    private void makeOrder(UserModel model) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter =
                 new SimpleDateFormat(application.getString(R.string.date_time_format));
         Date date = new Date();
         String orderId = auth.getUid() + formatter.format(date);
         database.getReference()
                 .child(NODE_NAME)
-                .child(Objects.requireNonNull(auth.getUid()))
+                .child(auth.getUid())
                 .child("Pending")
                 .push()
-                .setValue(new OrderModel(liveData.getValue(), orderId, "Pending"));
+                .setValue(new OrderModel(liveData.getValue(), orderId, "Pending", model));
     }
 }

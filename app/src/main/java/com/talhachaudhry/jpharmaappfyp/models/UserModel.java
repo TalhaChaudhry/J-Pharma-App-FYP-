@@ -15,9 +15,10 @@ public class UserModel implements Parcelable {
     String email;
     String profilePic;
     String password;
+    String userId;
 
     public UserModel(String shopName, String userName, String password, String address,
-                     String city, String contact, String email, String profilePic) {
+                     String city, String contact, String email, String profilePic, String userId) {
         this.shopName = shopName;
         this.userName = userName;
         this.address = address;
@@ -26,6 +27,7 @@ public class UserModel implements Parcelable {
         this.contact = contact;
         this.profilePic = profilePic;
         this.email = email;
+        this.userId = userId;
     }
 
     public String getContact() {
@@ -42,6 +44,7 @@ public class UserModel implements Parcelable {
         address = in.readString();
         city = in.readString();
         contact = in.readString();
+        userId = in.readString();
     }
 
     public UserModel() {
@@ -59,6 +62,14 @@ public class UserModel implements Parcelable {
             return new UserModel[size];
         }
     };
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getShopName() {
         return shopName;
@@ -137,5 +148,6 @@ public class UserModel implements Parcelable {
         parcel.writeString(password);
         parcel.writeString(profilePic);
         parcel.writeString(email);
+        parcel.writeString(userId);
     }
 }
