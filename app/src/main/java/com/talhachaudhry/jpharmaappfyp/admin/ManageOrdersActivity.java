@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.talhachaudhry.jpharmaappfyp.admin.fragments.AdminProceedingOrderFragment;
 import com.talhachaudhry.jpharmaappfyp.admin.fragments.CancelledOrdersFragment;
 import com.talhachaudhry.jpharmaappfyp.admin.fragments.DispatchedOrdersAdminFragment;
 import com.talhachaudhry.jpharmaappfyp.admin.fragments.PendingOrdersAdminFragment;
@@ -72,8 +73,10 @@ public class ManageOrdersActivity extends AppCompatActivity {
                 case 0:
                     return PendingOrdersAdminFragment.newInstance();
                 case 1:
-                    return DispatchedOrdersAdminFragment.newInstance();
+                    return AdminProceedingOrderFragment.newInstance();
                 case 2:
+                    return DispatchedOrdersAdminFragment.newInstance();
+                case 3:
                     return CancelledOrdersFragment.newInstance();
                 default:
                     return PendingOrdersAdminFragment.newInstance();
@@ -82,7 +85,7 @@ public class ManageOrdersActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 3;
+            return 4;
         }
     }
 

@@ -1,10 +1,13 @@
 package com.talhachaudhry.jpharmaappfyp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class OrderModel {
+public class OrderModel implements Parcelable {
     private List<CartModel> ordersList;
     private String orderId;
     private String status;
@@ -22,6 +25,26 @@ public class OrderModel {
         // required for Firebase
     }
 
+
+    protected OrderModel(Parcel in) {
+        ordersList = in.createTypedArrayList(CartModel.CREATOR);
+        orderId = in.readString();
+        status = in.readString();
+        reason = in.readString();
+        userModel = in.readParcelable(UserModel.class.getClassLoader());
+    }
+
+    public static final Creator<OrderModel> CREATOR = new Creator<OrderModel>() {
+        @Override
+        public OrderModel createFromParcel(Parcel in) {
+            return new OrderModel(in);
+        }
+
+        @Override
+        public OrderModel[] newArray(int size) {
+            return new OrderModel[size];
+        }
+    };
 
     public UserModel getUserModel() {
         return userModel;
@@ -67,5 +90,19 @@ public class OrderModel {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeTypedList(ordersList);
+        parcel.writeString(orderId);
+        parcel.writeString(status);
+        parcel.writeString(reason);
+        parcel.writeParcelable(userModel, i);
     }
 }

@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.AdminPendingOrdersAdapter;
 import com.talhachaudhry.jpharmaappfyp.adapter.CancelledOrdersAdapter;
+import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.CancelledOrdersBottomSheet;
+import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.ViewMedicineDetailsBottomSheet;
 import com.talhachaudhry.jpharmaappfyp.callbacks.CancelledOrdersCallback;
 import com.talhachaudhry.jpharmaappfyp.databinding.FragmentCancelledOrdersBinding;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
@@ -42,6 +44,8 @@ public class CancelledOrdersFragment extends Fragment implements CancelledOrders
 
     @Override
     public void onItemClicked(OrderModel model) {
-        //TODO
+        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 1);
+        bottomSheet.show(requireActivity().getSupportFragmentManager(),
+                "CancelOrdersBottomSheet");
     }
 }

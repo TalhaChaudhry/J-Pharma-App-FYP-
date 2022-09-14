@@ -37,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tabMode="scrollable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar">
 
@@ -44,6 +45,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pending" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/proceeding" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

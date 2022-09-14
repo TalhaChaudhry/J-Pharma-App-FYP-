@@ -39,7 +39,7 @@ public class ManageMedicineViewModel extends ViewModel {
     public void updateMedicine(ManageMedicineModel model) {
         database.getReference()
                 .child(NODE_NAME)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot snapshot1 : snapshot.getChildren()) {
@@ -54,6 +54,7 @@ public class ManageMedicineViewModel extends ViewModel {
                                         .child(NODE_NAME).
                                         child(Objects.requireNonNull(snapshot1.getKey()))
                                         .updateChildren(values);
+//                                        addOnCompleteListener(runnable -> replaceValue(model));
                             }
                         }
                     }
@@ -65,6 +66,12 @@ public class ManageMedicineViewModel extends ViewModel {
                 });
     }
 
+//    private void replaceValue(ManageMedicineModel model) {
+//        List<ManageMedicineModel> list = new ArrayList<>(Objects.requireNonNull(manageMedicineModelMutableLiveData.getValue()));
+//        int pos = list.indexOf(model);
+//        list.set(pos, model);
+//        manageMedicineModelMutableLiveData.setValue(list);
+//    }
 
     public void deleteMedicine(ManageMedicineModel model) {
         deleteFromDB(model);
@@ -91,7 +98,7 @@ public class ManageMedicineViewModel extends ViewModel {
     private void deleteFromDB(ManageMedicineModel model) {
         database.getReference()
                 .child(NODE_NAME)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot snapshot1 : snapshot.getChildren()) {
@@ -124,7 +131,7 @@ public class ManageMedicineViewModel extends ViewModel {
     private void getFromDB() {
         database.getReference()
                 .child(NODE_NAME)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot snapshot1 : snapshot.getChildren()) {

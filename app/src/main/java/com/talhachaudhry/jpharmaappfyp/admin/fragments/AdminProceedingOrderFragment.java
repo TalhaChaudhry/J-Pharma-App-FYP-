@@ -11,44 +11,50 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.talhachaudhry.jpharmaappfyp.R;
-import com.talhachaudhry.jpharmaappfyp.adapter.AdminDispatchedOrdersAdapter;
 import com.talhachaudhry.jpharmaappfyp.adapter.AdminPendingOrdersAdapter;
+import com.talhachaudhry.jpharmaappfyp.adapter.AdminProceedingOrderAdapter;
 import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.CancelledOrdersBottomSheet;
-import com.talhachaudhry.jpharmaappfyp.callbacks.AdminDispatchOrdersCallback;
-import com.talhachaudhry.jpharmaappfyp.databinding.FragmentDispatchedOrdersAdminBinding;
+import com.talhachaudhry.jpharmaappfyp.callbacks.AdminProceedingCallbacks;
+import com.talhachaudhry.jpharmaappfyp.databinding.FragmentAdminProceedingOrderBinding;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.ManageOrdersViewModel;
 
-public class DispatchedOrdersAdminFragment extends Fragment implements AdminDispatchOrdersCallback {
+public class AdminProceedingOrderFragment extends Fragment implements AdminProceedingCallbacks {
 
-    FragmentDispatchedOrdersAdminBinding binding;
+    FragmentAdminProceedingOrderBinding binding;
     ManageOrdersViewModel viewModel;
-    AdminDispatchedOrdersAdapter adapter;
+    AdminProceedingOrderAdapter adapter;
 
-    public static DispatchedOrdersAdminFragment newInstance() {
-        return new DispatchedOrdersAdminFragment();
+    public static AdminProceedingOrderFragment newInstance() {
+        return new AdminProceedingOrderFragment();
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentDispatchedOrdersAdminBinding.inflate(inflater, container, false);
+        binding = FragmentAdminProceedingOrderBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(ManageOrdersViewModel.class);
-        adapter = new AdminDispatchedOrdersAdapter(requireActivity(), this);
-        binding.dispatchOrderRv.setAdapter(adapter);
-        viewModel.getDispatchOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
+        adapter = new AdminProceedingOrderAdapter(requireActivity(), this);
+        binding.pendingOrderRv.setAdapter(adapter);
+        viewModel.getProceedingOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
                 adapter.submitList(orderModels));
         return binding.getRoot();
     }
 
     @Override
     public void onCancelClicked(OrderModel model) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.DISPATCH_TO_CANCEL, model);
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PROCEEDING_TO_CANCEL, model);
     }
 
     @Override
-    public void onCompleteClicked(OrderModel model) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.DISPATCH_TO_COMPLETE, model);
+    public void onDispatchClicked(OrderModel model) {
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PROCEEDING_TO_DISPATCH, model);
+    }
+
+    @Override
+    public void onPendingClicked(OrderModel model) {
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PROCEEDING_TO_PENDING, model);
     }
 
     @Override
@@ -56,10 +62,5 @@ public class DispatchedOrdersAdminFragment extends Fragment implements AdminDisp
         CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 0);
         bottomSheet.show(requireActivity().getSupportFragmentManager(),
                 "CancelOrdersBottomSheet");
-    }
-
-    @Override
-    public void putInProceeding(OrderModel orderModel) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.DISPATCH_PROCEEDING, orderModel);
     }
 }

@@ -59,6 +59,11 @@
     <string name="proceed">Proceed</string>
     <string name="cancel">Cancel</string>
     <string name="completed">Completed</string>
+    <string name="order_details">Order Details</string>
+    <string name="total_price">Total Price in RS</string>
+    <string name="medicine_name_title">Medicine Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="proceeding">Proceeding</string>
 
 
 </resources>

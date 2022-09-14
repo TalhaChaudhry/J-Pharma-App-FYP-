@@ -8,4 +8,6 @@ public interface AdminDispatchOrdersCallback {
     void onCompleteClicked(OrderModel model);
 
     void onClickedToView(OrderModel model);
+
+    void putInProceeding(OrderModel orderModel);
 }

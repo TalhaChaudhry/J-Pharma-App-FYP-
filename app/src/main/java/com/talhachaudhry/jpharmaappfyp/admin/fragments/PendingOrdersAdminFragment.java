@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.AdminPendingOrdersAdapter;
+import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.CancelledOrdersBottomSheet;
 import com.talhachaudhry.jpharmaappfyp.callbacks.AdminPendingOrderCallbacks;
 import com.talhachaudhry.jpharmaappfyp.databinding.FragmentPendingOrdersAdminBinding;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
@@ -41,21 +42,23 @@ public class PendingOrdersAdminFragment extends Fragment implements AdminPending
 
     @Override
     public void onProceedOrderClicker(OrderModel model) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_PROCEEDING,model);
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_PROCEEDING, model);
     }
 
     @Override
     public void onDispatchOrderClicker(OrderModel model) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_DISPATCH,model);
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_DISPATCH, model);
     }
 
     @Override
     public void onCancelOrderClicker(OrderModel model) {
-        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_CANCEL,model);
+        viewModel.performOperation(ManageOrdersViewModel.OrderOperationsEnums.PENDING_TO_CANCEL, model);
     }
 
     @Override
     public void onClickedToView(OrderModel orderModel) {
-        // TODO
+        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(orderModel, 0);
+        bottomSheet.show(requireActivity().getSupportFragmentManager(),
+                "CancelOrdersBottomSheet");
     }
 }

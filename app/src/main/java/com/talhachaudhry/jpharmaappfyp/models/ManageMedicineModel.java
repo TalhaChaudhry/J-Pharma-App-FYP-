@@ -103,6 +103,6 @@ public class ManageMedicineModel implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return super.toString();
+        return getName() + getMg() + getImagePath() + getDetail() + getPrice();
     }
 }
