@@ -12,13 +12,9 @@ Xapp/src/main/java/com/talhachaudhry/jpharmaappfyp/callbacks/CancelledOrdersCall
 z
 Japp/src/main/java/com/talhachaudhry/jpharmaappfyp/login_details/Login.java,d\1\d17bfdc79f75b4905c34f89b19fd2418d6bcfb0b
 {
-Kapp/src/main/java/com/talhachaudhry/jpharmaappfyp/utils/OrderDiffUtils.java,3\b\3bc3ec4d5bf5fc90ccdc939f599b9a78f0eb2862
-{
 Kapp/src/main/java/com/talhachaudhry/jpharmaappfyp/login_details/SignUp.java,1\e\1e4cb814ad58b737ce449741aa5e2500e4133b94
 w
 Gapp/src/main/java/com/talhachaudhry/jpharmaappfyp/models/UserModel.java,8\e\8e6a89dc7fb45be3a0f180d07c1ad6ab01c3aa13
-†
-Vapp/src/main/java/com/talhachaudhry/jpharmaappfyp/view_models/PlaceOrderViewModel.java,2\0\2071aecae7cdcc9f94e01fdf4362d31b7fbbba97
 ƒ
 Sapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/ManageMedicineActivity.java,1\e\1e605af3bf22679a10614ba9cdfbd7809979c4b3
 ˜

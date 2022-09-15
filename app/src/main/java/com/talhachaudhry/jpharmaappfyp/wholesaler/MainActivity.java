@@ -19,6 +19,7 @@ import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.MainFragment;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import nl.psdcompany.duonavigationdrawer.views.DuoMenuView;
 import nl.psdcompany.duonavigationdrawer.widgets.DuoDrawerToggle;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         auth = FirebaseAuth.getInstance();
         mDuoMenuView = (DuoMenuView) binding.drawer.getMenuView();
         setMenuList();

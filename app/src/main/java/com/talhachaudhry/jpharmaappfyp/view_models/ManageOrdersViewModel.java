@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
+import com.talhachaudhry.jpharmaappfyp.utils.NodesNames;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -220,25 +221,6 @@ public class ManageOrdersViewModel extends ViewModel {
             List<OrderModel> list = new ArrayList<>(Objects.requireNonNull(listName.getValue()));
             list.add(orderModel);
             listName.setValue(list);
-        }
-    }
-
-    public enum NodesNames {
-        MAIN_NODE_NAME("Orders"),
-        PENDING_NODE_NAME("Pending"),
-        DISPATCH_NODE_NAME("Dispatched"),
-        CANCEL_NODE_NAME("Cancelled"),
-        COMPLETE_NODE_NAME("Complete"),
-        PROCEEDING_NODE_NAME("Proceeding");
-
-        String name;
-
-        NodesNames(String orders) {
-            this.name = orders;
-        }
-
-        public String getName() {
-            return name;
         }
     }
 

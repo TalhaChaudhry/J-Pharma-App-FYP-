@@ -2,6 +2,7 @@ package com.talhachaudhry.jpharmaappfyp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,13 @@ import com.talhachaudhry.jpharmaappfyp.utils.OrderDiffUtils;
 public class AdminDispatchedOrdersAdapter extends ListAdapter<OrderModel, RecyclerViewViewHolderBoilerPlate> {
     Context context;
     AdminDispatchOrdersCallback callback;
+    boolean inAdmin;
 
-    public AdminDispatchedOrdersAdapter(Context context, AdminDispatchOrdersCallback callback) {
+    public AdminDispatchedOrdersAdapter(Context context, AdminDispatchOrdersCallback callback, boolean inAdmin) {
         super(new OrderDiffUtils());
         this.context = context;
         this.callback = callback;
+        this.inAdmin = inAdmin;
     }
 
     @NonNull
@@ -35,9 +38,15 @@ public class AdminDispatchedOrdersAdapter extends ListAdapter<OrderModel, Recycl
         SampleAdminDispatchedOrdersItemBinding binding = (SampleAdminDispatchedOrdersItemBinding) holder.binding;
         binding.orderIdTv.setText(getItem(position).getOrderId());
         binding.shopNameTv.setText(getItem(position).getUserModel().getUserName());
-        binding.cancelTv.setOnClickListener(view -> callback.onCancelClicked(getItem(holder.getAdapterPosition())));
-        binding.completedTv.setOnClickListener(view -> callback.onCompleteClicked(getItem(holder.getAdapterPosition())));
-        binding.proceedingTv.setOnClickListener(view -> callback.putInProceeding(getItem(holder.getAdapterPosition())));
+        if (inAdmin) {
+            binding.cancelTv.setOnClickListener(view -> callback.onCancelClicked(getItem(holder.getAdapterPosition())));
+            binding.completedTv.setOnClickListener(view -> callback.onCompleteClicked(getItem(holder.getAdapterPosition())));
+            binding.proceedingTv.setOnClickListener(view -> callback.putInProceeding(getItem(holder.getAdapterPosition())));
+        } else {
+            binding.proceedingTv.setVisibility(View.INVISIBLE);
+            binding.completedTv.setVisibility(View.INVISIBLE);
+            binding.cancelTv.setVisibility(View.INVISIBLE);
+        }
         holder.itemView.setOnClickListener(view -> callback.onClickedToView(getItem(holder.getAdapterPosition())));
     }
 }
