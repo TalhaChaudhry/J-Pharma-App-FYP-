@@ -40,6 +40,10 @@ public class ViewMedicineDetailsBottomSheet extends BottomSheetDialogFragment {
         }
     }
 
+    @Override
+    public int getTheme() {
+        return R.style.AppBottomSheetDialogTheme;
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override

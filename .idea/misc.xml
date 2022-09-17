@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/bottom_dialog_bg.xml" value="0.211" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/edittext_style.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_google__1_.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/icons_bg.xml" value="0.1925" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_admin.xml" value="0.12272727272727273" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_cancelled_orders_report.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_edit_order.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.10384615384615385" />
@@ -16,6 +18,7 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_orders_history.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_pending_orders.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_place_order.xml" value="0.25" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_sales_report.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_splash.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_view_wholesaler.xml" value="0.24114583333333334" />
@@ -28,7 +31,9 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_bottom_sheet_dialog.xml" value="0.24010416666666667" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cancelled_orders.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cancelled_orders_bottom_sheet.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cancelled_orders_report.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cart.xml" value="0.22708333333333333" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_complete_orders_report.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_dispatched_orders_admin.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_main.xml" value="0.10384615384615385" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_pending_orders_admin.xml" value="0.22708333333333333" />
@@ -45,10 +50,12 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_pending_orders_item.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_placeorder_item.xml" value="0.21" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_proceeding_item.xml" value="0.24010416666666667" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_sales_report_item.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/side_drawer_header.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/view_wholesaler_list_item.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/main_activity_menu.xml" value="0.21774193548387097" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/manage_medicine_activity_menu.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/sales_report_tool_bar.xml" value="0.24114583333333334" />
       </map>
     </option>
   </component>

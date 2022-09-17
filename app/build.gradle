@@ -44,6 +44,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-auth'
 
+    // graph
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
     //Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics'
 

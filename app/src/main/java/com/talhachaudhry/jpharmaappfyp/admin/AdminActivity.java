@@ -44,6 +44,7 @@ public class AdminActivity extends AppCompatActivity implements OnItemClicked {
         list.add(new ItemsModel("Manage Order", R.drawable.orders));
         list.add(new ItemsModel("View Wholesaler", R.drawable.wholesaler));
         list.add(new ItemsModel("Sales Report", R.drawable.sales_report));
+        list.add(new ItemsModel("Cancelled Orders Report", R.drawable.sales_report));
     }
 
     @Override
@@ -59,7 +60,10 @@ public class AdminActivity extends AppCompatActivity implements OnItemClicked {
                 startActivity(new Intent(this, ViewWholesalerActivity.class));
                 break;
             case 3:
-                startActivity(new Intent(this, ViewWholesalerActivity.class));
+                startActivity(new Intent(this, SalesReportActivity.class));
+                break;
+            case 4:
+                startActivity(new Intent(this, CancelledOrdersReportActivity.class));
                 break;
             default:
                 break;

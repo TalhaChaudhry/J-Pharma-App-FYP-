@@ -19,6 +19,12 @@
         android:theme="@style/Theme.JPharmaAppFYP"
         tools:targetApi="31">
         <activity
+            android:name=".admin.CancelledOrdersReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.SalesReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".wholesaler.OrdersHistoryActivity"
             android:exported="false" />
         <activity

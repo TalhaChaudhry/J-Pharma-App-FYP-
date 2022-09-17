@@ -13,7 +13,9 @@ import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
 import com.talhachaudhry.jpharmaappfyp.utils.NodesNames;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class OrdersDetailViewModel extends ViewModel {
@@ -22,6 +24,7 @@ public class OrdersDetailViewModel extends ViewModel {
     MutableLiveData<List<OrderModel>> pendingOrdersLiveData;
     MutableLiveData<List<OrderModel>> completeOrdersLiveData;
     MutableLiveData<List<OrderModel>> cancelledOrdersLiveData;
+    MutableLiveData<OrderModel> currentlyActiveOrder;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -32,6 +35,13 @@ public class OrdersDetailViewModel extends ViewModel {
             getOrders(NodesNames.COMPLETE_NODE_NAME.getName(), completeOrdersLiveData);
         }
         return completeOrdersLiveData;
+    }
+
+    public MutableLiveData<OrderModel> getCurrentlyActiveOrder() {
+        if (currentlyActiveOrder == null) {
+            currentlyActiveOrder = new MutableLiveData<>();
+        }
+        return currentlyActiveOrder;
     }
 
     public MutableLiveData<List<OrderModel>> getPendingOrdersLiveData() {
@@ -70,6 +80,12 @@ public class OrdersDetailViewModel extends ViewModel {
         return proceedingOrdersLiveData;
     }
 
+    public void setCurrentlyActiveOrder(OrderModel orderModel) {
+        if (currentlyActiveOrder != null) {
+            currentlyActiveOrder.setValue(orderModel);
+        }
+    }
+
     private void getOrders(String nodeName, MutableLiveData<List<OrderModel>> listName) {
 
         try {
@@ -96,8 +112,83 @@ public class OrdersDetailViewModel extends ViewModel {
         }
     }
 
-    public void editOrder(OrderModel orderModel) {
-        //TODO
+    public void editOrder() {
+        OrderModel orderModel = getCurrentlyActiveOrder().getValue();
+        database.getReference()
+                .child(NodesNames.MAIN_NODE_NAME.getName())
+                .child(auth.getUid())
+                .child(NodesNames.PENDING_NODE_NAME.getName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            OrderModel currentModel = snapshot1.getValue(OrderModel.class);
+                            if (currentModel.getOrderId().equals(orderModel.getOrderId())) {
+                                Map<String, Object> values = new HashMap<>();
+                                values.put("ordersList", orderModel.getOrdersList());
+                                database.getReference()
+                                        .child(NodesNames.MAIN_NODE_NAME.getName())
+                                        .child(auth.getUid())
+                                        .child(NodesNames.PENDING_NODE_NAME.getName())
+                                        .child(Objects.requireNonNull(snapshot1.getKey()))
+                                        .updateChildren(values);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // do nothing
+                    }
+                });
+    }
+
+    public void deleteOrder(OrderModel orderModel) {
+        database.getReference()
+                .child(NodesNames.MAIN_NODE_NAME.getName())
+                .child(auth.getUid())
+                .child(NodesNames.PENDING_NODE_NAME.getName())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            OrderModel currentModel = snapshot1.getValue(OrderModel.class);
+                            if (currentModel.getOrderId().equals(orderModel.getOrderId())) {
+                                database.getReference()
+                                        .child(NodesNames.MAIN_NODE_NAME.getName())
+                                        .child(auth.getUid())
+                                        .child(NodesNames.PENDING_NODE_NAME.getName()).
+                                        child(Objects.requireNonNull(snapshot1.getKey())).
+                                        removeValue().addOnCompleteListener(runnable ->
+                                                onOrderDeleted(orderModel));
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // do nothing
+                    }
+                });
+    }
+
+    private void onOrderDeleted(OrderModel orderModel) {
+        if (pendingOrdersLiveData != null) {
+            List<OrderModel> list =
+                    new ArrayList<>(Objects.
+                            requireNonNull(pendingOrdersLiveData.
+                                    getValue()));
+            list.remove(orderModel);
+            orderModel.setStatus(NodesNames.CANCEL_NODE_NAME.getName());
+            pendingOrdersLiveData.setValue(list);
+            database.getReference()
+                    .child(NodesNames.MAIN_NODE_NAME.getName())
+                    .child(auth.getUid())
+                    .child(NodesNames.CANCEL_NODE_NAME.getName())
+                    .push()
+                    .setValue(orderModel).
+                    addOnCompleteListener(runnable -> updateOrdersList(cancelledOrdersLiveData, orderModel));
+        }
     }
 
     private void updateOrdersList(MutableLiveData<List<OrderModel>> listName, OrderModel orderModel) {

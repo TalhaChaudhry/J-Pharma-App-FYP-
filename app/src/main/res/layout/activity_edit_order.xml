@@ -48,4 +48,9 @@
         app:layout_constraintTop_toBottomOf="@+id/tool_bar"
         tools:listitem="@layout/manage_medicine_item" />
 
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

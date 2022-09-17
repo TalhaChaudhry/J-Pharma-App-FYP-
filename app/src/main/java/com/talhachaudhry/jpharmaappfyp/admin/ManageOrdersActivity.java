@@ -30,6 +30,7 @@ public class ManageOrdersActivity extends AppCompatActivity {
         binding = ActivityManageOrdersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Objects.requireNonNull(getSupportActionBar()).hide();
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
         binding.viewpager.setAdapter(new FragmentsAdapter(getSupportFragmentManager(), getLifecycle()));
         tabSettings(binding.tabLayout, binding.viewpager);
     }

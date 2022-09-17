@@ -39,6 +39,11 @@ public class ViewWholesalersBottomFragment extends BottomSheetDialogFragment {
     }
 
     @Override
+    public int getTheme() {
+        return R.style.AppBottomSheetDialogTheme;
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentViewWholesalersBottomBinding.inflate(inflater, container, false);

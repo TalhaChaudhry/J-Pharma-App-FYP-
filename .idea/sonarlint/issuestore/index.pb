@@ -1,8 +1,4 @@
 
-z
-Japp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/CartAdapter.java,6\d\6de4fac8ca478a6665897c207212a97886d7d3a4
-ˆ
-Xapp/src/main/java/com/talhachaudhry/jpharmaappfyp/wholesaler/fragments/CartFragment.java,1\9\194aeb670f5f58d70d2c26b1e62d06392e122a55
 ‹
 [app/src/main/java/com/talhachaudhry/jpharmaappfyp/callbacks/AdminPendingOrderCallbacks.java,5\c\5cb6ee39620191528efd473857b20dc5f78dd059
 …
@@ -15,9 +11,5 @@ Japp/src/main/java/com/talhachaudhry/jpharmaappfyp/login_details/Login.java,d\1
 Kapp/src/main/java/com/talhachaudhry/jpharmaappfyp/login_details/SignUp.java,1\e\1e4cb814ad58b737ce449741aa5e2500e4133b94
 w
 Gapp/src/main/java/com/talhachaudhry/jpharmaappfyp/models/UserModel.java,8\e\8e6a89dc7fb45be3a0f180d07c1ad6ab01c3aa13
-ƒ
-Sapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/ManageMedicineActivity.java,1\e\1e605af3bf22679a10614ba9cdfbd7809979c4b3
-˜
-happ/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/bottom_sheet/ViewMedicineDetailsBottomSheet.java,f\e\fed91d46b1abba3ce3497f1737727e8103b5909c
 ˆ
 Xapp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/AdminPendingOrdersAdapter.java,6\4\64d88cc09d523426aab075717a2089a63fa4a478

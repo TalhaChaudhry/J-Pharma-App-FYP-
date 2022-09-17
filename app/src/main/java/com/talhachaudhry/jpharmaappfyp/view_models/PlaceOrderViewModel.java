@@ -20,6 +20,7 @@ import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -80,16 +81,24 @@ public class PlaceOrderViewModel extends AndroidViewModel {
         orderForCurrentUser();
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void makeOrder(UserModel model) {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter =
+        SimpleDateFormat formatter =
                 new SimpleDateFormat(application.getString(R.string.date_time_format));
+        SimpleDateFormat formatterForModel =
+                new SimpleDateFormat(application.getString(R.string.date_time_format_for_model));
+        SimpleDateFormat yearFormatter =
+                new SimpleDateFormat(application.getString(R.string.year_format_for_model));
+        Calendar cal = Calendar.getInstance();
         Date date = new Date();
+        cal.setTime(date);
         String orderId = auth.getUid() + formatter.format(date);
         database.getReference()
                 .child(NODE_NAME)
                 .child(auth.getUid())
                 .child("Pending")
                 .push()
-                .setValue(new OrderModel(liveData.getValue(), orderId, "Pending", model));
+                .setValue(new OrderModel(liveData.getValue(), orderId, "Pending",
+                        model, formatterForModel.format(date), cal.get(Calendar.MONTH), Integer.parseInt(yearFormatter.format(date))));
     }
 }

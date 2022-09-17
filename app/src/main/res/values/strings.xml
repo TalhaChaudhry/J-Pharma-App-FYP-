@@ -51,6 +51,8 @@
     <string name="cart">Cart</string>
     <string name="place_order">Place Order</string>
     <string name="date_time_format">ddMMyyHHmmss</string>
+    <string name="date_time_format_for_model">dd-MM-yyyy HH:mm:ss</string>
+    <string name="year_format_for_model">yyyy</string>
     <string name="manage_orders">Manage Orders</string>
     <string name="pending">Pending</string>
     <string name="dispatched">Dispatched</string>
@@ -68,6 +70,12 @@
     <string name="orders_history">Orders History</string>
     <string name="total_price_in_rs">Total Price in Rs</string>
     <string name="edit_order">Edit Order</string>
+    <string name="sales_report">Sales Report</string>
+    <string name="select_the_month">Select the Month :</string>
+    <string name="enter_year">Enter Year</string>
+    <string name="completed_orders">Completed Orders</string>
+    <string name="cancelled_orders">Cancelled Orders</string>
+    <string name="cancelled_orders_amount_in_rs">Cancelled Orders Amount in RS :</string>
 
 
 </resources>

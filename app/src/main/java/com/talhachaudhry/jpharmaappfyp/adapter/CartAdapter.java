@@ -59,7 +59,6 @@ public class CartAdapter extends ListAdapter<CartModel, RecyclerViewViewHolderBo
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (!String.valueOf(charSequence).trim().equals("") && Integer.parseInt(String.valueOf(charSequence)) != 0) {
                     getItem(holder.getAdapterPosition()).setQuantity(Integer.parseInt(String.valueOf(charSequence)));
-                    callback.onQuantityUpdated(getItem(holder.getAdapterPosition()));
                 }
             }
 

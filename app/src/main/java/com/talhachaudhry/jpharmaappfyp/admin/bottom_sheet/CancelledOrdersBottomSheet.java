@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.OrdersDetailAdapter;
 import com.talhachaudhry.jpharmaappfyp.databinding.FragmentCancelledOrdersBottomSheetBinding;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
@@ -46,6 +47,11 @@ public class CancelledOrdersBottomSheet extends BottomSheetDialogFragment {
         }
     }
 
+
+    @Override
+    public int getTheme() {
+        return R.style.AppBottomSheetDialogTheme;
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override

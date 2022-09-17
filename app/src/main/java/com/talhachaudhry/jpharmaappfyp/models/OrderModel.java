@@ -13,12 +13,43 @@ public class OrderModel implements Parcelable {
     private String status;
     private String reason = "";
     private UserModel userModel;
+    private String dateAndTime;
+    private int month;
+    private int year;
 
-    public OrderModel(List<CartModel> ordersList, String orderId, String status, UserModel userModel) {
+    public OrderModel(List<CartModel> ordersList, String orderId, String status,
+                      UserModel userModel, String dateAndTime, int month, int year) {
         this.ordersList = ordersList;
         this.orderId = orderId;
         this.status = status;
         this.userModel = userModel;
+        this.dateAndTime = dateAndTime;
+        this.month = month;
+        this.year = year;
+    }
+
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public OrderModel() {
@@ -32,6 +63,9 @@ public class OrderModel implements Parcelable {
         status = in.readString();
         reason = in.readString();
         userModel = in.readParcelable(UserModel.class.getClassLoader());
+        dateAndTime = in.readString();
+        month = in.readInt();
+        year = in.readInt();
     }
 
     public static final Creator<OrderModel> CREATOR = new Creator<OrderModel>() {
@@ -104,5 +138,8 @@ public class OrderModel implements Parcelable {
         parcel.writeString(status);
         parcel.writeString(reason);
         parcel.writeParcelable(userModel, i);
+        parcel.writeString(dateAndTime);
+        parcel.writeInt(month);
+        parcel.writeInt(year);
     }
 }
