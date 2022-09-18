@@ -17,6 +17,7 @@ import com.talhachaudhry.jpharmaappfyp.login_details.Login;
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.MainFragment;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityMainBinding;
+import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.UserProfileFragment;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -47,14 +48,15 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
     }
 
     private void setMenuList() {
+        menuList.add("Dashboard");
         menuList.add("Profile");
         menuList.add("Invoice");
         menuList.add("Privacy Policy");
-        menuList.add("FAQ");
     }
 
     private void handleMenu() {
         mMenuAdapter = new CustomMenuAdapter(menuList);
+        mMenuAdapter.setViewSelected(0, true);
         mDuoMenuView.setOnMenuClickListener(this);
         mDuoMenuView.setAdapter(mMenuAdapter);
     }
@@ -75,10 +77,14 @@ public class MainActivity extends AppCompatActivity implements DuoMenuView.OnMen
     @Override
     public void onOptionClicked(int position, Object objectClicked) {
         setTitle("J Pharma");
-
         mMenuAdapter.setViewSelected(position, true);
-
         switch (position) {
+            case 0:
+                goToFragment(new MainFragment(), false);
+                break;
+            case 1:
+                goToFragment(UserProfileFragment.newInstance(), false);
+                break;
             default:
                 goToFragment(new MainFragment(), false);
                 break;

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/orders_detail"
+            android:text="@string/order_status"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

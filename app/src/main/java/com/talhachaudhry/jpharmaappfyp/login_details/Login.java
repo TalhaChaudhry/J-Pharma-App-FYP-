@@ -74,7 +74,8 @@ public class Login extends AppCompatActivity {
         if (binding.EmailLogin.getText().toString().equals("Admin") &&
                 binding.PasswordLogin.getText().toString().equals("1234567")) {
             startActivity(new Intent(Login.this, AdminActivity.class));
-        } else {
+        } else if (!binding.EmailLogin.getText().toString().trim().equals("") &&
+                !binding.PasswordLogin.getText().toString().trim().equals("")) {
             progressDialog.show();
             try {
                 auth.signInWithEmailAndPassword(binding.EmailLogin.getText().toString().trim(), binding.PasswordLogin.getText().toString()).
@@ -96,8 +97,10 @@ public class Login extends AppCompatActivity {
                 progressDialog.dismiss();
                 Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-
+        } else {
+            Toast.makeText(Login.this, "Email or Password is required", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private static final int RC_SIGN_IN = 70;

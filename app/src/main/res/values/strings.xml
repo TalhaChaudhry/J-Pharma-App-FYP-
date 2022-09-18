@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">J Pharma App FYP</string>
+    <string name="app_name">J Pharma</string>
     <string name="title_activity_splash">SplashActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -68,7 +68,7 @@
     <string name="proceeding">Proceeding</string>
     <string name="orders_detail">Orders Detail</string>
     <string name="orders_history">Orders History</string>
-    <string name="total_price_in_rs">Total Price in Rs</string>
+    <string name="total_price_in_rs">Total Price (Rs) :</string>
     <string name="edit_order">Edit Order</string>
     <string name="sales_report">Sales Report</string>
     <string name="select_the_month">Select the Month :</string>
@@ -76,6 +76,9 @@
     <string name="completed_orders">Completed Orders</string>
     <string name="cancelled_orders">Cancelled Orders</string>
     <string name="cancelled_orders_amount_in_rs">Cancelled Orders Amount in RS :</string>
+    <string name="order_status">Orders Status</string>
+    <string name="order_id">Order Id:</string>
+    <string name="date_and_time">Date and Time :</string>
 
 
 </resources>

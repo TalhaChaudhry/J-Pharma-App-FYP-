@@ -87,7 +87,6 @@ public class OrdersDetailViewModel extends ViewModel {
     }
 
     private void getOrders(String nodeName, MutableLiveData<List<OrderModel>> listName) {
-
         try {
             database.getReference().
                     child(NodesNames.MAIN_NODE_NAME.getName()).

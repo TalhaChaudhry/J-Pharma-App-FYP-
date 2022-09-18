@@ -46,10 +46,10 @@ public class MainFragment extends Fragment implements OnItemClicked {
     }
 
     public void setList() {
-        list.add(new ItemsModel("Place Order", R.drawable.place_order));
-        list.add(new ItemsModel("Edit Order", R.drawable.edit_order));
-        list.add(new ItemsModel("Pending Orders", R.drawable.pending_order));
-        list.add(new ItemsModel("Orders History", R.drawable.order_history));
+        list.add(new ItemsModel("Place Order", R.drawable.order_image));
+        list.add(new ItemsModel("Edit Order", R.drawable.edit_order_image));
+        list.add(new ItemsModel("Orders Status", R.drawable.order_status_image));
+        list.add(new ItemsModel("Orders History", R.drawable.order_history_image_icon));
     }
 
     @Override

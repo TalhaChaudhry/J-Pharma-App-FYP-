@@ -9,7 +9,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
-import com.talhachaudhry.jpharmaappfyp.models.DateModel;
 import com.talhachaudhry.jpharmaappfyp.models.ManageMedicineModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
 import com.talhachaudhry.jpharmaappfyp.utils.NodesNames;
@@ -23,18 +22,10 @@ public class ReportAnalysisViewModel extends ViewModel {
     MutableLiveData<HashMap<String, Integer>> cancelOrdersModelLivedata;
     MutableLiveData<Integer> totalPriceLivedata;
     MutableLiveData<Integer> cancelOrdersAmountLivedata;
-    MutableLiveData<DateModel> dateModelMutableLiveData;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     int month;
     int year;
 
-
-    public MutableLiveData<DateModel> getDateModelMutableLiveData() {
-        if (dateModelMutableLiveData == null) {
-            dateModelMutableLiveData = new MutableLiveData<>();
-        }
-        return dateModelMutableLiveData;
-    }
 
     public MutableLiveData<Integer> getTotalPriceLivedata() {
         if (totalPriceLivedata == null) {
@@ -76,13 +67,6 @@ public class ReportAnalysisViewModel extends ViewModel {
                     NodesNames.COMPLETE_NODE_NAME.getName(), completeOrderAnalysisModelLivedata, totalPriceLivedata);
         }
         return completeOrderAnalysisModelLivedata;
-    }
-
-
-    public void setDateModelMutableLiveData(DateModel model) {
-        if (dateModelMutableLiveData != null) {
-            dateModelMutableLiveData.setValue(model);
-        }
     }
 
 

@@ -1,11 +1,0 @@
-
-n
-java:S1450"SRemove the "auth" field and declare it as a local variable in the relevant methods.(Ú‡›æøÿÿÿÿ
-r
-java:S1450"WRemove the "database" field and declare it as a local variable in the relevant methods.(ž­“óûÿÿÿÿ
-L
-java:S1874"6Remove this use of "ProgressDialog"; it is deprecated.(ðÝýº
-Q
-java:S1874)"6Remove this use of "ProgressDialog"; it is deprecated.(ÎÃ¡·ùÿÿÿÿ
-M
-java:S1874+"2Remove this use of "setMessage"; it is deprecated.(«çÌÑüÿÿÿÿ

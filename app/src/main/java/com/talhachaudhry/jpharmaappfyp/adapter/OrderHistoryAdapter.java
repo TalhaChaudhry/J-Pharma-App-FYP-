@@ -36,13 +36,13 @@ public class OrderHistoryAdapter extends ListAdapter<OrderModel, RecyclerViewVie
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewViewHolderBoilerPlate holder, int position) {
         SampleCompleteOrderItemBinding binding = (SampleCompleteOrderItemBinding) holder.binding;
-        binding.orderId.setText(getItem(position).getOrderId());
+        binding.orderIdTv.setText(getItem(position).getOrderId());
+        binding.dateTv.setText(getItem(position).getDateAndTime());
         int total = 0;
-        for (CartModel model :
-                getItem(position).getOrdersList()) {
-            total += model.getQuantity() * model.getModel().getPrice();
+        for (CartModel cartModel : getItem(position).getOrdersList()) {
+            total += cartModel.getQuantity() * cartModel.getModel().getPrice();
         }
-        binding.totalTv.setText(MessageFormat.format("{0}", total));
+        binding.shopNameTv.setText(MessageFormat.format("{0}", total));
         holder.itemView.setOnClickListener(view -> callback.onItemClicked(getItem(holder.getAdapterPosition())));
     }
 }

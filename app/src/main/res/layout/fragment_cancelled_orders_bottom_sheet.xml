@@ -6,21 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".admin.bottom_sheet.CancelledOrdersBottomSheet">
 
+
+    <TextView
+        android:id="@+id/order_id_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Order Id"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/order_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="10dp"
-        android:gravity="center"
+        android:gravity="left"
         android:text="order Id"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/order_id_tag"
+        app:layout_constraintTop_toTopOf="@id/order_id_tag" />
 
     <TextView
         android:id="@+id/user_name_tag"
@@ -163,14 +176,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        tools:listitem="@layout/sample_order_view_item"
         android:layout_marginBottom="5dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/total_tag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_details_tag" />
+        app:layout_constraintTop_toBottomOf="@+id/order_details_tag"
+        tools:listitem="@layout/sample_order_view_item" />
 
     <TextView
         android:id="@+id/total_tag"

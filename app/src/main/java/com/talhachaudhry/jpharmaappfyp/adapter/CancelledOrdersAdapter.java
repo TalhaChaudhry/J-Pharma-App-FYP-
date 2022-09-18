@@ -8,9 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.talhachaudhry.jpharmaappfyp.callbacks.CancelledOrdersCallback;
+import com.talhachaudhry.jpharmaappfyp.models.CartModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
 import com.talhachaudhry.jpharmaappfyp.utils.OrderDiffUtils;
 import com.talhachaudhry.jpharmaappfyp.databinding.SampleCancelledOrdersItemBinding;
+
+import java.text.MessageFormat;
 
 public class CancelledOrdersAdapter extends ListAdapter<OrderModel, RecyclerViewViewHolderBoilerPlate> {
     Context context;
@@ -33,7 +36,12 @@ public class CancelledOrdersAdapter extends ListAdapter<OrderModel, RecyclerView
     public void onBindViewHolder(@NonNull RecyclerViewViewHolderBoilerPlate holder, int position) {
         SampleCancelledOrdersItemBinding binding = (SampleCancelledOrdersItemBinding) holder.binding;
         binding.orderIdTv.setText(getItem(position).getOrderId());
-        binding.reasonTv.setText(getItem(position).getReason());
+        binding.dateTv.setText(getItem(position).getDateAndTime());
+        int total = 0;
+        for (CartModel cartModel : getItem(position).getOrdersList()) {
+            total += cartModel.getQuantity() * cartModel.getModel().getPrice();
+        }
+        binding.shopNameTv.setText(MessageFormat.format("{0}", total));
         holder.itemView.setOnClickListener(view -> callback.onItemClicked(getItem(holder.getAdapterPosition())));
     }
 }

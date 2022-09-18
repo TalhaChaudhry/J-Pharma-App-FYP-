@@ -43,8 +43,8 @@ public class AdminActivity extends AppCompatActivity implements OnItemClicked {
         list.add(new ItemsModel("Manage Medicine", R.drawable.medicine));
         list.add(new ItemsModel("Manage Order", R.drawable.orders));
         list.add(new ItemsModel("View Wholesaler", R.drawable.wholesaler));
-        list.add(new ItemsModel("Sales Report", R.drawable.sales_report));
-        list.add(new ItemsModel("Cancelled Orders Report", R.drawable.sales_report));
+        list.add(new ItemsModel("Sales Report", R.drawable.sales_report_image));
+        list.add(new ItemsModel("Cancelled Orders Report", R.drawable.cancel_sales_report_image));
     }
 
     @Override
