@@ -14,6 +14,7 @@ import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.callbacks.OnViewWholesalerClicked;
 import com.talhachaudhry.jpharmaappfyp.databinding.ViewWholesalerListItemBinding;
 import com.talhachaudhry.jpharmaappfyp.models.UserModel;
+import com.talhachaudhry.jpharmaappfyp.view_models.ViewWholesalersViewModel;
 
 public class ViewWholesalerRecyclerAdapter extends ListAdapter<UserModel, RecyclerViewViewHolderBoilerPlate> {
 
@@ -40,10 +41,12 @@ public class ViewWholesalerRecyclerAdapter extends ListAdapter<UserModel, Recycl
         binding.nameTv.setText(getItem(position).getUserName());
         binding.shopNameTv.setText(getItem(position).getShopName());
         binding.cityTv.setText(getItem(position).getCity());
-        Glide.with(context).
-                load(Uri.parse(getItem(position).getProfilePic())).
-                placeholder(R.drawable.avatar).
-                into(binding.userImage);
+        if (getItem(position).getIsInStorage() != 1) {
+            Glide.with(context).
+                    load(Uri.parse(getItem(position).getProfilePic())).
+                    placeholder(R.drawable.avatar).
+                    into(binding.userImage);
+        }
         holder.itemView.setOnClickListener(view -> callback.onViewWholesalerClicked(getItem(holder.getAdapterPosition())));
     }
 

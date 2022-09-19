@@ -9,6 +9,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import java.util.Objects;
 public class ViewWholesalersViewModel extends ViewModel {
 
     MutableLiveData<List<UserModel>> userModelList;
+    MutableLiveData<byte[]> profileImage;
     FirebaseDatabase database;
     private static final String NODE_NAME = "Users";
 
@@ -31,6 +34,26 @@ public class ViewWholesalersViewModel extends ViewModel {
         return userModelList;
     }
 
+    public MutableLiveData<byte[]> getProfileImage() {
+        if (profileImage == null) {
+            profileImage = new MutableLiveData<>();
+        }
+        return profileImage;
+    }
+
+    public void getProfilePic(UserModel model) {
+        StorageReference ref
+                = FirebaseStorage.getInstance().getReference()
+                .child(model.getProfilePic());
+        final long ONE_MEGABYTE = 1024 * 1024;
+        ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(bytes -> {
+            if (profileImage != null) {
+                profileImage.setValue(bytes);
+            }
+        }).addOnFailureListener(exception -> {
+            // do nothing
+        });
+    }
 
     private void getFromDB() {
         database.getReference()

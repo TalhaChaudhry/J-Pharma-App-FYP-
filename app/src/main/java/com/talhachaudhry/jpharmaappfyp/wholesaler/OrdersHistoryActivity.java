@@ -36,7 +36,7 @@ public class OrdersHistoryActivity extends AppCompatActivity implements Cancelle
 
     @Override
     public void onItemClicked(OrderModel model) {
-        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 1);
+        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 0);
         bottomSheet.show(getSupportFragmentManager(),
                 "CancelOrdersBottomSheet");
     }

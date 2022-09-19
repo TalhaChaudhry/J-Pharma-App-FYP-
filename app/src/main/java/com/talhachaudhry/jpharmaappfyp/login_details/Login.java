@@ -22,7 +22,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.talhachaudhry.jpharmaappfyp.admin.AdminActivity;
 import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.MainActivity;
@@ -132,14 +135,27 @@ public class Login extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "signInWithCredential:success");
                         FirebaseUser user = auth.getCurrentUser();
-                        UserModel users = new UserModel();
-                        users.setUserName(user.getDisplayName());
-                        users.setProfilePic(user.getPhotoUrl().toString());
-                        users.setContact(user.getPhoneNumber());
-                        users.setAddress(user.getEmail());
-                        users.setUserId(auth.getUid());
-                        database.getReference().child("Users").child(user.getUid()).setValue(users);
-                        startActivity(new Intent(Login.this, MainActivity.class));
+                        database.getReference().child("Users").
+                                addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (!snapshot.hasChild(user.getUid())) {
+                                            UserModel users = new UserModel();
+                                            users.setUserName(user.getDisplayName());
+                                            users.setProfilePic(user.getPhotoUrl().toString());
+                                            users.setContact(user.getPhoneNumber());
+                                            users.setEmail(user.getEmail());
+                                            users.setUserId(auth.getUid());
+                                            database.getReference().child("Users").child(user.getUid()).setValue(users);
+                                        }
+                                        startActivity(new Intent(Login.this, MainActivity.class));
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        // do nothing
+                                    }
+                                });
                     } else {
                         Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

@@ -79,6 +79,9 @@
     <string name="order_status">Orders Status</string>
     <string name="order_id">Order Id:</string>
     <string name="date_and_time">Date and Time :</string>
+    <string name="reason">Reason :</string>
+    <string name="edit">Edit</string>
+    <string name="apply">Apply</string>
 
 
 </resources>

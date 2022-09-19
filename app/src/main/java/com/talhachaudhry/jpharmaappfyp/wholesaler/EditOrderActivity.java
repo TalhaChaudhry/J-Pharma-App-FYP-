@@ -53,7 +53,7 @@ public class EditOrderActivity extends AppCompatActivity implements EditOrderCal
 
     @Override
     public void onViewOrderClicked(OrderModel model) {
-        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 1);
+        CancelledOrdersBottomSheet bottomSheet = CancelledOrdersBottomSheet.newInstance(model, 0);
         bottomSheet.show(getSupportFragmentManager(),
                 "CancelOrdersBottomSheet");
     }

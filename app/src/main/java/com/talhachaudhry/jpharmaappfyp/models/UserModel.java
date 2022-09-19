@@ -16,6 +16,8 @@ public class UserModel implements Parcelable {
     String profilePic;
     String password;
     String userId;
+    byte[] imageArr;
+    int isInStorage = 0;
 
     public UserModel(String shopName, String userName, String password, String address,
                      String city, String contact, String email, String profilePic, String userId) {
@@ -30,25 +32,18 @@ public class UserModel implements Parcelable {
         this.userId = userId;
     }
 
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
     protected UserModel(Parcel in) {
         shopName = in.readString();
         userName = in.readString();
         address = in.readString();
         city = in.readString();
         contact = in.readString();
+        email = in.readString();
+        profilePic = in.readString();
+        password = in.readString();
         userId = in.readString();
-    }
-
-    public UserModel() {
-        // Required for Firebase
+        imageArr = in.createByteArray();
+        isInStorage = in.readInt();
     }
 
     public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
@@ -62,6 +57,35 @@ public class UserModel implements Parcelable {
             return new UserModel[size];
         }
     };
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+
+    public UserModel() {
+        // Required for Firebase
+    }
+
+    public byte[] getImageArr() {
+        return imageArr;
+    }
+
+    public void setImageArr(byte[] imageArr) {
+        this.imageArr = imageArr;
+    }
+
+    public int getIsInStorage() {
+        return isInStorage;
+    }
+
+    public void setIsInStorage(int isInStorage) {
+        this.isInStorage = isInStorage;
+    }
 
     public String getUserId() {
         return userId;
@@ -133,6 +157,7 @@ public class UserModel implements Parcelable {
         return super.toString();
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -145,9 +170,11 @@ public class UserModel implements Parcelable {
         parcel.writeString(address);
         parcel.writeString(city);
         parcel.writeString(contact);
-        parcel.writeString(password);
-        parcel.writeString(profilePic);
         parcel.writeString(email);
+        parcel.writeString(profilePic);
+        parcel.writeString(password);
         parcel.writeString(userId);
+        parcel.writeByteArray(imageArr);
+        parcel.writeInt(isInStorage);
     }
 }
