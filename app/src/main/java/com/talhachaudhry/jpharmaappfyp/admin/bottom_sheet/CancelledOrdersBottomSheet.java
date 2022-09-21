@@ -59,7 +59,7 @@ public class CancelledOrdersBottomSheet extends BottomSheetDialogFragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentCancelledOrdersBottomSheetBinding.inflate(inflater,
                 container, false);
-        if(indicator==1){
+        if (indicator == 1) {
             binding.cancelTv.setVisibility(View.VISIBLE);
             binding.cancelTag.setVisibility(View.VISIBLE);
             binding.cancelTv.setText(model.getReason());
@@ -68,6 +68,7 @@ public class CancelledOrdersBottomSheet extends BottomSheetDialogFragment {
         binding.orderId.setText(model.getOrderId());
         binding.userNameTv.setText(model.getUserModel().getUserName());
         binding.shopNameTv.setText(model.getUserModel().getShopName());
+        binding.contactNumberTv.setText(model.getUserModel().getContact());
         binding.cancelTv.setText(model.getReason());
         binding.orderDetailRv.setAdapter(adapter);
         for (CartModel price :

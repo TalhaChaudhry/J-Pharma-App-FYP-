@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorSecondary"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/back_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/back_arrow"
-            />
+            android:src="@drawable/back_arrow" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -28,8 +28,7 @@
             android:text="@string/manage_medicine"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/add_medicine"
@@ -37,8 +36,7 @@
             android:layout_height="30dp"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
-            android:src="@drawable/add_icon"
-            />
+            android:src="@drawable/add_icon" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -57,10 +55,15 @@
     <RelativeLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/animation_container"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

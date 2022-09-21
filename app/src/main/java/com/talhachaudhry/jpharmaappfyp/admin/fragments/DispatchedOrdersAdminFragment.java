@@ -53,14 +53,26 @@ public class DispatchedOrdersAdminFragment extends Fragment implements AdminDisp
                              Bundle savedInstanceState) {
         binding = FragmentDispatchedOrdersAdminBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(requireActivity()).get(ManageOrdersViewModel.class);
-        adapter = new AdminDispatchedOrdersAdapter(requireActivity(), this,inAdmin);
+        adapter = new AdminDispatchedOrdersAdapter(requireActivity(), this, inAdmin);
         binding.dispatchOrderRv.setAdapter(adapter);
         if (inAdmin) {
-            viewModel.getDispatchOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel.getDispatchOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                if (orderModels.isEmpty()) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+                }
+                adapter.submitList(orderModels);
+            });
         } else {
-            viewModel1.getDispatchOrdersLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel1.getDispatchOrdersLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                if (orderModels.isEmpty()) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+                }
+                adapter.submitList(orderModels);
+            });
         }
         return binding.getRoot();
     }

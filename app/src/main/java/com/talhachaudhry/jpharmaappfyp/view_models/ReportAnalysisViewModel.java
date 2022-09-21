@@ -20,6 +20,7 @@ public class ReportAnalysisViewModel extends ViewModel {
 
     MutableLiveData<HashMap<String, Integer>> completeOrderAnalysisModelLivedata;
     MutableLiveData<HashMap<String, Integer>> cancelOrdersModelLivedata;
+    MutableLiveData<HashMap<String, Integer>> tempLiveData;
     MutableLiveData<Integer> totalPriceLivedata;
     MutableLiveData<Integer> cancelOrdersAmountLivedata;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -43,6 +44,7 @@ public class ReportAnalysisViewModel extends ViewModel {
         return cancelOrdersAmountLivedata;
     }
 
+
     public MutableLiveData<HashMap<String, Integer>> getCancelOrdersModelLivedata(int month, int year) {
         if (cancelOrdersModelLivedata == null || this.month != month || this.year != year) {
             cancelOrdersModelLivedata = new MutableLiveData<>();
@@ -55,6 +57,25 @@ public class ReportAnalysisViewModel extends ViewModel {
         }
         return cancelOrdersModelLivedata;
     }
+
+    public MutableLiveData<HashMap<String, Integer>> getTempLivedata(int month, int year, int indicator) {
+        if (tempLiveData == null || this.month != month || this.year != year) {
+            tempLiveData = new MutableLiveData<>();
+            tempLiveData.setValue(new HashMap<>());
+            if (cancelOrdersAmountLivedata != null && indicator == 0) {
+                cancelOrdersAmountLivedata.setValue(0);
+                getAllMedicines(month, year,
+                        NodesNames.CANCEL_NODE_NAME.getName(), tempLiveData, cancelOrdersAmountLivedata);
+            } else if (totalPriceLivedata != null && indicator == 1) {
+                totalPriceLivedata.setValue(0);
+                getAllMedicines(month, year,
+                        NodesNames.COMPLETE_NODE_NAME.getName(), tempLiveData, cancelOrdersAmountLivedata);
+            }
+        }
+
+        return tempLiveData;
+    }
+
 
     public MutableLiveData<HashMap<String, Integer>> getAnalysisModelLivedata(int month, int year) {
         if (completeOrderAnalysisModelLivedata == null || this.month != month || this.year != year) {

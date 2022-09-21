@@ -56,11 +56,21 @@ public class CancelledOrdersFragment extends Fragment implements CancelledOrders
         adapter = new CancelledOrdersAdapter(requireActivity(), this);
         binding.cancelOrderRv.setAdapter(adapter);
         if (inAdmin) {
-            viewModel.getCancelOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel.getCancelOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                        if (orderModels.isEmpty()) {
+                            requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                        } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                            requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+                        }
+                        adapter.submitList(orderModels);});
         } else {
-            viewModel1.getCancelledOrdersLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel1.getCancelledOrdersLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                        if (orderModels.isEmpty()) {
+                            requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                        } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                            requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+                        }
+                        adapter.submitList(orderModels);});
         }
         return binding.getRoot();
     }

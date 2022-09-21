@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/bottom_dialog_bg.xml" value="0.211" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/cancel_order_icon.xml" value="0.211" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/delete_icon.xml" value="0.211" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/edittext_style.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_facebook.xml" value="0.1" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/drawable/ic_google__1_.xml" value="0.1" />
@@ -28,6 +30,7 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_add_medicine.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_add_to_cart.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_admin_proceeding_order.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_animation.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_bottom_sheet_dialog.xml" value="0.24010416666666667" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cancelled_orders.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cancelled_orders_bottom_sheet.xml" value="0.24114583333333334" />

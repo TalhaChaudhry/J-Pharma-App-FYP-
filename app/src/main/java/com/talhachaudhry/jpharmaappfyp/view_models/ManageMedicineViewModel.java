@@ -19,7 +19,10 @@ import java.util.Objects;
 
 public class ManageMedicineViewModel extends ViewModel {
     MutableLiveData<List<ManageMedicineModel>> manageMedicineModelMutableLiveData;
+    MutableLiveData<Boolean> allMedicinesSet;
+    List<String> allMedicines = new ArrayList<>();
     FirebaseDatabase database;
+    boolean isLoading = true;
     private static final String NODE_NAME = "Medicines";
 
     public LiveData<List<ManageMedicineModel>> getManageMedicineViewModelMutableLiveData() {
@@ -30,6 +33,17 @@ public class ManageMedicineViewModel extends ViewModel {
             getFromDB();
         }
         return manageMedicineModelMutableLiveData;
+    }
+
+    public LiveData<Boolean> getAllMedicinesSet() {
+        if (allMedicinesSet == null) {
+            allMedicinesSet = new MutableLiveData<>();
+        }
+        return allMedicinesSet;
+    }
+
+    public boolean getIsLoading() {
+        return isLoading;
     }
 
     public void addMedicine(ManageMedicineModel model) {
@@ -128,6 +142,10 @@ public class ManageMedicineViewModel extends ViewModel {
                 });
     }
 
+    public List<String> getAllMedicines() {
+        return allMedicines;
+    }
+
     private void getFromDB() {
         database.getReference()
                 .child(NODE_NAME)
@@ -138,9 +156,14 @@ public class ManageMedicineViewModel extends ViewModel {
                             try {
                                 ManageMedicineModel model = snapshot1.getValue(ManageMedicineModel.class);
                                 updateList(model);
+                                allMedicines.add(model.getName());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+                        }
+                        if (getAllMedicinesSet() != null) {
+                            isLoading = false;
+                            allMedicinesSet.setValue(true);
                         }
                     }
 

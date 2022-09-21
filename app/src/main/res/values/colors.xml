@@ -13,4 +13,5 @@
     <color name="google_btn_color">#f5a623</color>
     <color name="colorSecondary">#29166f</color>
     <color name="colorVariant">#29166f</color>
+    <color name="trans_grey">#73808080</color>
 </resources>

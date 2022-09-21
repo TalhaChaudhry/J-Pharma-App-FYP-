@@ -35,8 +35,14 @@ public class PendingOrdersAdminFragment extends Fragment implements AdminPending
         viewModel = new ViewModelProvider(requireActivity()).get(ManageOrdersViewModel.class);
         adapter = new AdminPendingOrdersAdapter(requireActivity(), this);
         binding.pendingOrderRv.setAdapter(adapter);
-        viewModel.getPendingOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                adapter.submitList(orderModels));
+        viewModel.getPendingOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+            if (orderModels.isEmpty()) {
+                requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+            } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+            }
+            adapter.submitList(orderModels);
+        });
         return binding.getRoot();
     }
 

@@ -27,6 +27,7 @@ import java.util.UUID;
 public class EditUserProfileViewModel extends ViewModel {
     MutableLiveData<UserModel> userModelMutableLiveData;
     MutableLiveData<byte[]> profileImage;
+    MutableLiveData<Boolean> notifyUser;
     private static final String MAIN_NODE = "Users";
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -37,6 +38,13 @@ public class EditUserProfileViewModel extends ViewModel {
             getUserData();
         }
         return userModelMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getNotifyUser() {
+        if (notifyUser == null) {
+            notifyUser = new MutableLiveData<>();
+        }
+        return notifyUser;
     }
 
     public MutableLiveData<byte[]> getProfileImage() {
@@ -92,7 +100,9 @@ public class EditUserProfileViewModel extends ViewModel {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        // do nothing
+                        if (getNotifyUser() != null) {
+                            notifyUser.setValue(false);
+                        }
                     }
                 });
     }
@@ -149,7 +159,9 @@ public class EditUserProfileViewModel extends ViewModel {
                 .child("images/" + UUID.randomUUID().toString());
         UploadTask uploadTask = ref.putBytes(data);
         uploadTask.addOnFailureListener(exception -> {
-            // do nothing
+            if (getNotifyUser() != null) {
+                notifyUser.setValue(true);
+            }
         }).addOnSuccessListener(taskSnapshot -> updateProfile(taskSnapshot.getMetadata().getPath()));
     }
 }

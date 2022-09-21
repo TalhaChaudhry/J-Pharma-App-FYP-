@@ -23,20 +23,12 @@ Napp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/MedicineAdapter.java
 Uapp/src/main/java/com/talhachaudhry/jpharmaappfyp/callbacks/OnViewMedicineDetail.java,f\3\f39310f96ec9c75ee784cdb687e5e75b7d5db847
 ƒ
 Sapp/src/main/java/com/talhachaudhry/jpharmaappfyp/callbacks/EditOrderCallbacks.java,1\0\10bc1737654a97b03792a8190adc12aa080e2259
-ƒ
-Sapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/ManageMedicineActivity.java,1\e\1e605af3bf22679a10614ba9cdfbd7809979c4b3
-„
-Tapp/src/main/java/com/talhachaudhry/jpharmaappfyp/wholesaler/PlaceOrderActivity.java,1\e\1e6e2102d9c869890f527fd58f85f2ff80112caf
 {
 Kapp/src/main/java/com/talhachaudhry/jpharmaappfyp/models/MedicineModel.java,2\2\22c1495f6f3cecf986e3533b2177ba0fbf7e6617
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 {
 Kapp/src/main/java/com/talhachaudhry/jpharmaappfyp/models/AnalysisModel.java,b\9\b904ce4eb45254bd6b521a16dd2990c0ba16b4b4
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-Š
-Zapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/CancelledOrdersReportActivity.java,0\8\083f7dd77ca43879cff705d39f86b627a9ccf473
 z
 Japp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/CartAdapter.java,6\d\6de4fac8ca478a6665897c207212a97886d7d3a4
 }
@@ -47,10 +39,6 @@ Xapp/src/main/java/com/talhachaudhry/jpharmaappfyp/wholesaler/fragments/CartFrag
 Qapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/ManageOrdersActivity.java,0\5\05d4aa9352573967ac12db87ebe163fd440274c9
 x
 Happ/src/main/java/com/talhachaudhry/jpharmaappfyp/models/OrderModel.java,a\1\a18ba876a757212553810243a450eb1fa2e37208
-†
-Vapp/src/main/java/com/talhachaudhry/jpharmaappfyp/view_models/PlaceOrderViewModel.java,2\0\2071aecae7cdcc9f94e01fdf4362d31b7fbbba97
-€
-Papp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/SalesReportActivity.java,4\f\4f6fff7cd8b1a702c4e979ccc4e024c112008912
 A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 {
@@ -65,10 +53,6 @@ x
 Happ/src/main/java/com/talhachaudhry/jpharmaappfyp/models/ItemsModel.java,5\7\5780d4ee3be5b04cffa610c47e94d21427a01366
 ƒ
 Sapp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/ItemsRecyclerAdapter.java,1\b\1b8e50352b3cc5293a978d56b25db865017e39f4
-Š
-Zapp/src/main/java/com/talhachaudhry/jpharmaappfyp/admin/fragments/AddMedicineFragment.java,0\4\0491d1b20ab3305de244ec74ecf4db12c083b14c
-Š
-Zapp/src/main/java/com/talhachaudhry/jpharmaappfyp/view_models/ManageMedicineViewModel.java,8\c\8cb7a0fce4a5407a5e03822565fb3213728b8248
 €
 Papp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/CustomMenuAdapter.java,2\0\209936d1c58eb58b1f944d6f91b77ed8ba395e2d
 z
@@ -89,5 +73,3 @@ Napp/src/main/java/com/talhachaudhry/jpharmaappfyp/wholesaler/MainActivity.java
 Xapp/src/main/java/com/talhachaudhry/jpharmaappfyp/wholesaler/fragments/MainFragment.java,2\a\2a2876de3dce47d302253db9c80798dc7a41ad71
 ‚
 Rapp/src/main/java/com/talhachaudhry/jpharmaappfyp/adapter/OrderHistoryAdapter.java,5\3\538245d28cb0da27bcd95d33228ee165d81d50ac
-Š
-Zapp/src/main/java/com/talhachaudhry/jpharmaappfyp/view_models/ReportAnalysisViewModel.java,6\7\678790df8cf35940550a21ec0890094e1ba32abb

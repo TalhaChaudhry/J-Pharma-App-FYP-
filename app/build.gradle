@@ -48,6 +48,10 @@ dependencies {
     // graph
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 
+    // lottie Animations
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
     //Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics'
 

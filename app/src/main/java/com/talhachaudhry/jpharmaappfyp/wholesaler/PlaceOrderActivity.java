@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -22,6 +24,7 @@ import com.talhachaudhry.jpharmaappfyp.databinding.ActivityPlaceOrderBinding;
 import com.talhachaudhry.jpharmaappfyp.view_models.ManageMedicineViewModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.PlaceOrderViewModel;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.AddToCartFragment;
+import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.AnimationFragment;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.CartFragment;
 
 import java.util.ArrayList;
@@ -34,8 +37,6 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
     MedicineAdapter adapter;
     ManageMedicineViewModel viewModel;
     PlaceOrderViewModel placeOrderViewModel;
-    String[] languages = {"Panadol", "Disprin", "Paracitamol", "Bruffin", "Vagra", "Vitamins"};
-    ArrayAdapter arrayAdapter;
 
     @Override
 
@@ -45,6 +46,9 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
         setContentView(binding.getRoot());
         Objects.requireNonNull(getSupportActionBar()).hide();
         viewModel = new ViewModelProvider(this).get(ManageMedicineViewModel.class);
+        if (viewModel.getIsLoading()) {
+            openAnimation();
+        }
         placeOrderViewModel = new ViewModelProvider(this).get(PlaceOrderViewModel.class);
         placeOrderViewModel.getCartList().observe(this, cartModels -> {
             if (!cartModels.isEmpty()) {
@@ -55,9 +59,16 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
         });
         binding.viewCartBtn.setOnClickListener(view ->
                 openFragment(CartFragment.newInstance(), R.id.fragment_container));
-        arrayAdapter = new
-                ArrayAdapter(this, android.R.layout.simple_list_item_1, languages);
-        binding.searchEt.setAdapter(arrayAdapter);
+        viewModel.getAllMedicinesSet().observe(this, aBoolean -> {
+            if (aBoolean) {
+                ArrayAdapter arrayAdapter = new
+                        ArrayAdapter(this, android.R.layout.simple_list_item_1, viewModel.getAllMedicines());
+                binding.searchEt.setAdapter(arrayAdapter);
+                runOnUiThread(() -> getSupportFragmentManager().popBackStack());
+            }
+        });
+
+
         binding.searchEt.setThreshold(1);
         binding.backBtn.setOnClickListener(view -> onBackPressed());
         adapter = new MedicineAdapter(this, this);
@@ -65,9 +76,14 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
         viewModel.getManageMedicineViewModelMutableLiveData().observe(this, manageMedicineModels ->
                 adapter.submitList(manageMedicineModels));
         binding.searchBtn.setOnClickListener(view -> {
-            int pos = Arrays.asList(languages).indexOf(binding.searchEt.getText().toString().trim());
+            int pos = viewModel.getAllMedicines().indexOf(binding.searchEt.getText().toString().trim());
             binding.placeOrderRv.scrollToPosition(pos);
         });
+    }
+
+    void openAnimation() {
+        new Handler(Looper.getMainLooper()).post(() -> openFragment(AnimationFragment.newInstance(R.raw.loader_animation, ""),
+                R.id.animation_container));
     }
 
     private void openFragment(@NonNull Fragment fragment, @IdRes int container) {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.talhachaudhry.jpharmaappfyp.adapter.OrderHistoryAdapter;
 import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.CancelledOrdersBottomSheet;
@@ -30,8 +31,14 @@ public class OrdersHistoryActivity extends AppCompatActivity implements Cancelle
         viewModel = new ViewModelProvider(this).get(OrdersDetailViewModel.class);
         adapter = new OrderHistoryAdapter(this, this);
         binding.ordersHistoryRv.setAdapter(adapter);
-        viewModel.getCompleteOrdersLiveData().observe(this, orderModels ->
-                adapter.submitList(orderModels));
+        viewModel.getCompleteOrdersLiveData().observe(this, orderModels -> {
+            if (orderModels.isEmpty()) {
+                runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+            } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+            }
+            adapter.submitList(orderModels);
+        });
     }
 
     @Override

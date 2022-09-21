@@ -3,6 +3,7 @@ package com.talhachaudhry.jpharmaappfyp.admin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,12 +18,17 @@ import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
+import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityCancelledOrdersReportBinding;
 import com.talhachaudhry.jpharmaappfyp.view_models.ReportAnalysisViewModel;
 
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -35,6 +41,8 @@ public class CancelledOrdersReportActivity extends AppCompatActivity implements 
     String[] month = {"Jan", "Feb", "Mar", "Apr", "May",
             "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     int year;
+    Date date = new Date();
+    Calendar cal = Calendar.getInstance();
     Pie pie;
 
     @Override
@@ -42,11 +50,20 @@ public class CancelledOrdersReportActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         binding = ActivityCancelledOrdersReportBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         Objects.requireNonNull(getSupportActionBar()).hide();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat yearFormatter =
+                new SimpleDateFormat(getString(R.string.year_format_for_model));
+        binding.yearEt.setText(yearFormatter.format(date));
+        year = Integer.parseInt(yearFormatter.format(date));
+        cal.setTime(date);
+        monthNumber = cal.get(Calendar.MONTH);
         viewModel = new ViewModelProvider(this).get(ReportAnalysisViewModel.class);
+        viewModel.getTempLivedata(monthNumber, year, 0).observe(this, hashMap ->
+                viewModel.getCancelOrdersModelLivedata(monthNumber, year).observe(this,
+                        this::updatePie));
         ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, month);
         binding.monthSpinner.setAdapter(colorAdapter);
+        binding.monthSpinner.setSelection(monthNumber);
         binding.monthSpinner.setOnItemSelectedListener(this);
         viewModel.getCancelOrdersAmountLivedata().observe(this, integer ->
                 binding.totalTv.setText(MessageFormat.format("{0}", integer)));
@@ -91,16 +108,25 @@ public class CancelledOrdersReportActivity extends AppCompatActivity implements 
 
 
     void updatePie(HashMap<String, Integer> hashMap) {
+        boolean indicator = true;
         for (Map.Entry<String, Integer> entrySet : hashMap.entrySet()) {
             data.put(entrySet.getKey(), new ValueDataEntry(entrySet.getKey(), entrySet.getValue()));
-        }
-        ArrayList<DataEntry> list = new ArrayList<>();
-        for (Map.Entry<String, DataEntry> entrySet : data.entrySet()) {
-            list.add(entrySet.getValue());
+            if (entrySet.getValue() > 0) {
+                indicator = false;
+            }
         }
         pie.title("Medicine Sales Cancelled in " + " " + month[monthNumber] + " " + year);
-        pie.animation();
-        pie.data(list);
+        if (!indicator) {
+            List<DataEntry> dataEntry = new ArrayList<>();
+            for (Map.Entry<String, DataEntry> entrySet : data.entrySet()) {
+                dataEntry.add(entrySet.getValue());
+            }
+            pie.data(dataEntry);
+        } else {
+            List<DataEntry> list = new ArrayList<>();
+            list.add(new ValueDataEntry("No Data", 100));
+            pie.data(list);
+        }
 
     }
 

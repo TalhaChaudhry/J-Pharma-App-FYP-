@@ -54,11 +54,21 @@ public class AdminProceedingOrderFragment extends Fragment implements AdminProce
         adapter = new AdminProceedingOrderAdapter(requireActivity(), this, inAdmin);
         binding.pendingOrderRv.setAdapter(adapter);
         if (inAdmin) {
-            viewModel.getProceedingOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel.getProceedingOrdersListLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                if (orderModels.isEmpty()) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
+                }
+                adapter.submitList(orderModels);
+            });
         } else {
-            viewModel1.getProceedingOrdersLiveData().observe(getViewLifecycleOwner(), orderModels ->
-                    adapter.submitList(orderModels));
+            viewModel1.getProceedingOrdersLiveData().observe(getViewLifecycleOwner(), orderModels -> {
+                if (orderModels.isEmpty()) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                }
+                adapter.submitList(orderModels);
+            });
         }
         return binding.getRoot();
     }
