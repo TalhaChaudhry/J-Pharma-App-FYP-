@@ -62,14 +62,16 @@
 
             <TextView
                 android:id="@+id/medicine_name"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="Medicine Name"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/name_tag"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/name_tag"
+                app:layout_constraintStart_toStartOf="@id/name_tag"
                 app:layout_constraintTop_toBottomOf="@+id/name_tag" />
 
             <TextView
@@ -80,7 +82,7 @@
 
                 android:layout_marginEnd="5dp"
                 android:gravity="center"
-                android:text="Sample Text"
+                android:text="10"
                 app:layout_constraintBottom_toBottomOf="@+id/cross"
                 app:layout_constraintEnd_toStartOf="@+id/cross"
                 app:layout_constraintTop_toTopOf="@+id/cross" />
@@ -102,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
-                android:text="Sample Text"
+                android:text="100"
                 app:layout_constraintBottom_toBottomOf="@+id/total_tv"
                 app:layout_constraintEnd_toStartOf="@+id/total_tv"
                 app:layout_constraintTop_toTopOf="@+id/total_tv" />
@@ -112,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="Sample Text"
@@ -120,8 +122,8 @@
                 app:layout_constraintStart_toStartOf="@+id/total_tag"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/total_tag"
-                app:layout_constraintTop_toBottomOf="@+id/medicine_name"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/total_tag"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

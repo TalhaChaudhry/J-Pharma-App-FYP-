@@ -66,6 +66,8 @@ public class AdminProceedingOrderFragment extends Fragment implements AdminProce
             viewModel1.getProceedingOrdersLiveData().observe(getViewLifecycleOwner(), orderModels -> {
                 if (orderModels.isEmpty()) {
                     requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.VISIBLE));
+                } else if (binding.animation.getVisibility() != View.INVISIBLE) {
+                    requireActivity().runOnUiThread(() -> binding.animation.setVisibility(View.INVISIBLE));
                 }
                 adapter.submitList(orderModels);
             });
