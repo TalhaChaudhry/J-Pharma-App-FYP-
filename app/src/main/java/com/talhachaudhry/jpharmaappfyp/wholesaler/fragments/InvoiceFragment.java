@@ -5,14 +5,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.InvoiceAdapter;
 import com.talhachaudhry.jpharmaappfyp.callbacks.CancelledOrdersCallback;
 import com.talhachaudhry.jpharmaappfyp.callbacks.OpenBillFragmentCallback;

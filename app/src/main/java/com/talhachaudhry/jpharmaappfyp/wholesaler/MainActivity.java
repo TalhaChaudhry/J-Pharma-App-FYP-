@@ -21,7 +21,6 @@ import com.talhachaudhry.jpharmaappfyp.login_details.Login;
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
-import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.InvoiceDetailFragment;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.InvoiceFragment;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.MainFragment;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityMainBinding;
