@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.talhachaudhry.jpharmaappfyp.adapter.ViewWholesalerRecyclerAdapter;
 import com.talhachaudhry.jpharmaappfyp.admin.bottom_sheet.ViewWholesalersBottomFragment;
@@ -28,9 +29,16 @@ public class ViewWholesalerActivity extends AppCompatActivity implements OnViewW
         Objects.requireNonNull(getSupportActionBar()).hide();
         adapter = new ViewWholesalerRecyclerAdapter(this, this);
         binding.viewWholesalerRv.setAdapter(adapter);
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
         viewModel = new ViewModelProvider(this).get(ViewWholesalersViewModel.class);
-        viewModel.getUsersModel().observe(this, userModels ->
-                adapter.submitList(userModels));
+        viewModel.getUsersModel().observe(this, userModels -> {
+            if (userModels.isEmpty()) {
+                binding.animation.setVisibility(View.VISIBLE);
+            } else if (binding.animation.getVisibility() == View.VISIBLE) {
+                binding.animation.setVisibility(View.INVISIBLE);
+            }
+            adapter.submitList(userModels);
+        });
     }
 
     @Override

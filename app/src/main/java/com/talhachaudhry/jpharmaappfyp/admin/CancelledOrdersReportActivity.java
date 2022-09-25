@@ -65,6 +65,7 @@ public class CancelledOrdersReportActivity extends AppCompatActivity implements 
         binding.monthSpinner.setAdapter(colorAdapter);
         binding.monthSpinner.setSelection(monthNumber);
         binding.monthSpinner.setOnItemSelectedListener(this);
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
         viewModel.getCancelOrdersAmountLivedata().observe(this, integer ->
                 binding.totalTv.setText(MessageFormat.format("{0}", integer)));
         binding.filterTv.setOnClickListener(view -> {

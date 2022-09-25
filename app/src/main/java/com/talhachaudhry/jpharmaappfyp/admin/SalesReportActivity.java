@@ -63,6 +63,7 @@ public class SalesReportActivity extends AppCompatActivity implements AdapterVie
                 viewModel.getAnalysisModelLivedata(monthNumber, year).observe(this,
                         this::updatePie));
         ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, month);
+        binding.backBtn.setOnClickListener(view -> onBackPressed());
         binding.monthSpinner.setAdapter(colorAdapter);
         binding.monthSpinner.setSelection(monthNumber);
         binding.monthSpinner.setOnItemSelectedListener(this);
