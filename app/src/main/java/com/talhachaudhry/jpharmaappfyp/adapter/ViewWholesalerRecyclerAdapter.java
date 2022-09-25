@@ -17,7 +17,6 @@ import com.talhachaudhry.jpharmaappfyp.models.UserModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.ViewWholesalersViewModel;
 
 public class ViewWholesalerRecyclerAdapter extends ListAdapter<UserModel, RecyclerViewViewHolderBoilerPlate> {
-
     Context context;
     OnViewWholesalerClicked callback;
 
@@ -51,15 +50,12 @@ public class ViewWholesalerRecyclerAdapter extends ListAdapter<UserModel, Recycl
     }
 
     private static class DiffUtils extends DiffUtil.ItemCallback<UserModel> {
-
         @Override
-        public boolean areItemsTheSame(@NonNull UserModel oldItem, @NonNull UserModel newItem) {
-            return oldItem.hashCode() == newItem.hashCode();
+        public boolean areItemsTheSame(@NonNull UserModel oldItem, @NonNull UserModel newItem) {return oldItem.hashCode() == newItem.hashCode();
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull UserModel oldItem, @NonNull UserModel newItem) {
-            return oldItem.toString().equals(newItem.toString());
+        public boolean areContentsTheSame(@NonNull UserModel oldItem, @NonNull UserModel newItem) {return oldItem.toString().equals(newItem.toString());
         }
     }
 }

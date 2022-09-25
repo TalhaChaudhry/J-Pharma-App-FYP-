@@ -44,30 +44,22 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage:20.0.2'
-
+    //Firebase Analytics
+    implementation 'com.google.firebase:firebase-analytics'
+    // Firebase Database
+    implementation 'com.google.firebase:firebase-database'
+    // Google Login Service
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
     // graph
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
-
     // lottie Animations
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
-
-    //Firebase Analytics
-    implementation 'com.google.firebase:firebase-analytics'
-
-    // Firebase Database
-    implementation 'com.google.firebase:firebase-database'
-
-    // Google Login Service
-    implementation 'com.google.android.gms:play-services-auth:19.2.0'
-
-    //Glide
+    //Glide For Showing Images
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
-
     // Animated Drawer
     implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
-
     // For Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

@@ -14,21 +14,16 @@
         <item name="android:actionMenuTextColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
-
     <style name="Theme.JPharmaAppFYP.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
     <style name="Theme.JPharmaAppFYP.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="Theme.JPharmaAppFYP.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="AppBottomSheetDialogTheme"
         parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
-
     <style name="AppModalStyle"
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_dialog_bg</item>

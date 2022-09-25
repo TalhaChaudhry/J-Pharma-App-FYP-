@@ -72,8 +72,7 @@ public class CancelledOrdersReportActivity extends AppCompatActivity implements 
                 year = Integer.parseInt(binding.yearEt.getText().toString().trim());
                 if (year != 0) {
                     viewModel.getCancelOrdersModelLivedata(monthNumber, year).observe(this,
-                            this::updatePie
-                    );
+                            this::updatePie);
                 } else {
                     Toast.makeText(this, "Year cannot be zero", Toast.LENGTH_SHORT).show();
                 }

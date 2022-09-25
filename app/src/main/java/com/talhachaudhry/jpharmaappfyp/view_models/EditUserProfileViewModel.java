@@ -46,14 +46,12 @@ public class EditUserProfileViewModel extends ViewModel {
         }
         return notifyUser;
     }
-
     public MutableLiveData<byte[]> getProfileImage() {
         if (profileImage == null) {
             profileImage = new MutableLiveData<>();
         }
         return profileImage;
     }
-
     public void upDateUserModel(String shopName, String userName, String city, String contact, String address) {
         database.getReference()
                 .child(MAIN_NODE)
@@ -97,7 +95,6 @@ public class EditUserProfileViewModel extends ViewModel {
                                 .updateChildren(values).
                                 addOnCompleteListener(runnable -> getUserData());
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         if (getNotifyUser() != null) {

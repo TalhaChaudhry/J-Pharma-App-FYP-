@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:digits="0123456789"
                 android:background="@drawable/edittext_style"
                 android:gravity="center"
                 android:inputType="numberSigned"

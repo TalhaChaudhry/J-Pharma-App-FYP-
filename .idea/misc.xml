@@ -14,7 +14,7 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_cancelled_orders_report.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_edit_order.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.10384615384615385" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_medicine.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_manage_orders.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/activity_orders_history.xml" value="0.24114583333333334" />
@@ -38,8 +38,11 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_cart.xml" value="0.22708333333333333" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_complete_orders_report.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_dispatched_orders_admin.xml" value="0.24114583333333334" />
-        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_main.xml" value="0.10384615384615385" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_invoice.xml" value="0.22708333333333333" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_invoice_detail.xml" value="0.22708333333333333" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_main.xml" value="0.22" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_pending_orders_admin.xml" value="0.22708333333333333" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_privacy_policy.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_user_profile.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/fragment_view_wholesalers_bottom.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/manage_medicine_item.xml" value="0.24114583333333334" />
@@ -49,10 +52,12 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_complete_order_item.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_dashboard_menu.xml" value="0.22" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_edit_order_item.xml" value="0.24010416666666667" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_invoice_detail_item.xml" value="0.24114583333333334" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_invoice_item.xml" value="0.24010416666666667" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_item_cart.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_order_view_item.xml" value="0.33" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_pending_orders_item.xml" value="0.24114583333333334" />
-        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_placeorder_item.xml" value="0.21" />
+        <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_placeorder_item.xml" value="0.25" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_proceeding_item.xml" value="0.24010416666666667" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/sample_sales_report_item.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/layout/side_drawer_header.xml" value="0.24114583333333334" />

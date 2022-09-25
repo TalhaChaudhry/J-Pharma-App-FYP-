@@ -17,7 +17,6 @@ import com.talhachaudhry.jpharmaappfyp.databinding.ManageMedicineItemBinding;
 import com.talhachaudhry.jpharmaappfyp.models.ManageMedicineModel;
 
 public class ManageMedicineRecyclerAdapter extends ListAdapter<ManageMedicineModel, RecyclerViewViewHolderBoilerPlate> {
-
     Context context;
     OnViewMedicineDetail callback;
 
@@ -53,13 +52,11 @@ public class ManageMedicineRecyclerAdapter extends ListAdapter<ManageMedicineMod
     public static class DiffUtils extends DiffUtil.ItemCallback<ManageMedicineModel> {
 
         @Override
-        public boolean areItemsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) {
-            return oldItem.hashCode() == newItem.hashCode();
+        public boolean areItemsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) { return oldItem.hashCode() == newItem.hashCode();
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) {
-            return oldItem.toString().equals(newItem.toString());
+        public boolean areContentsTheSame(@NonNull ManageMedicineModel oldItem, @NonNull ManageMedicineModel newItem) { return oldItem.toString().equals(newItem.toString());
         }
     }
 }

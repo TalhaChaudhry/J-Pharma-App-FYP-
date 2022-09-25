@@ -23,13 +23,9 @@ import com.talhachaudhry.jpharmaappfyp.databinding.FragmentMainBinding;
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment implements OnItemClicked {
-
-
     FragmentMainBinding binding;
     ArrayList<ItemsModel> list = new ArrayList<>();
     ItemsRecyclerAdapter adapter;
-
-
     public static MainFragment newInstance() {
         return new MainFragment();
     }
@@ -44,7 +40,6 @@ public class MainFragment extends Fragment implements OnItemClicked {
         binding.wholesalerRv.setAdapter(adapter);
         return binding.getRoot();
     }
-
     public void setList() {
         list.add(new ItemsModel("Place Order", R.drawable.order_image));
         list.add(new ItemsModel("Edit Order", R.drawable.edit_order_image));

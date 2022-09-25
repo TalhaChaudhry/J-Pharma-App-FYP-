@@ -43,9 +43,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-
-
-
     <TextView
         android:id="@+id/tv1"
         android:layout_width="0dp"
@@ -61,7 +58,6 @@
         app:layout_constraintEnd_toStartOf="@id/month_spinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tool_bar" />
-
 
     <Spinner
         android:id="@+id/month_spinner"

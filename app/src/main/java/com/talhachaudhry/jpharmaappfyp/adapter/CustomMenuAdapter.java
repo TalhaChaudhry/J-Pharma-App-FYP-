@@ -29,8 +29,6 @@ public class CustomMenuAdapter extends BaseAdapter {
 
     public void setViewSelected(int position, boolean selected) {
 
-        // Looping through the options in the menu
-        // Selecting the chosen option
         for (int i = 0; i < mOptionViews.size(); i++) {
             if (i == position) {
                 mOptionViews.get(i).setSelected(selected);
@@ -57,12 +55,8 @@ public class CustomMenuAdapter extends BaseAdapter {
             optionView = (DuoOptionView) convertView;
         }
 
-        // Using the DuoOptionView's default selectors
         optionView.bind(option, null, null);
-
-        // Adding the views to an array list to handle view selection
         mOptionViews.add(optionView);
-
         return optionView;
     }
 }

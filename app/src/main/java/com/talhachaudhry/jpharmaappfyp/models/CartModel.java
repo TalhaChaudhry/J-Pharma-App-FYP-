@@ -8,16 +8,13 @@ import androidx.annotation.NonNull;
 public class CartModel implements Parcelable {
     private ManageMedicineModel model;
     private int quantity;
-
     public CartModel(ManageMedicineModel model, int quantity) {
         this.model = model;
         this.quantity = quantity;
     }
-
     public CartModel() {
         // required for Firebase
     }
-
     protected CartModel(Parcel in) {
         model = in.readParcelable(ManageMedicineModel.class.getClassLoader());
         quantity = in.readInt();

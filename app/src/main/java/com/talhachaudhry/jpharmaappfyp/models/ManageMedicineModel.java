@@ -37,7 +37,6 @@ public class ManageMedicineModel implements Parcelable {
         @Override
         public ManageMedicineModel createFromParcel(Parcel in) {
             return new ManageMedicineModel(in);
-//            return new ManageMedicineModel(in.readString(), in.readString(), in.readInt(), in.readString(), in.readString());
         }
 
         @Override

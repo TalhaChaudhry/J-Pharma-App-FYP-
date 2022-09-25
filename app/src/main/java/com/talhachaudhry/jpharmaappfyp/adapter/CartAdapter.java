@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -59,6 +60,10 @@ public class CartAdapter extends ListAdapter<CartModel, RecyclerViewViewHolderBo
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (!String.valueOf(charSequence).trim().equals("") && Integer.parseInt(String.valueOf(charSequence)) != 0) {
                     getItem(holder.getAdapterPosition()).setQuantity(Integer.parseInt(String.valueOf(charSequence)));
+                } else {
+                    binding.quantity.setText("1");
+                    getItem(holder.getAdapterPosition()).setQuantity(1);
+                    Toast.makeText(context, "Quantity cannot be empty or 0", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -67,7 +72,6 @@ public class CartAdapter extends ListAdapter<CartModel, RecyclerViewViewHolderBo
                 // do nothing
             }
         });
-
     }
 
     private static class DiffUtils extends DiffUtil.ItemCallback<CartModel> {

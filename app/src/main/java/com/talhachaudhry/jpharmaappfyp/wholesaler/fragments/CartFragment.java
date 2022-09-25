@@ -76,8 +76,10 @@ public class CartFragment extends Fragment implements CartCallback {
             if (!list.isEmpty()) {
                 if (inEdit) {
                     viewModel1.editOrder();
+                    Toast.makeText(requireActivity(), "Order Edited", Toast.LENGTH_SHORT).show();
                 } else {
                     viewModel.placeOrder();
+                    Toast.makeText(requireActivity(), "Order Placed", Toast.LENGTH_SHORT).show();
                 }
                 requireActivity().onBackPressed();
             } else {

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.talhachaudhry.jpharmaappfyp.callbacks.AdminDispatchOrdersCallback;
 import com.talhachaudhry.jpharmaappfyp.databinding.SampleAdminDispatchedOrdersItemBinding;
-import com.talhachaudhry.jpharmaappfyp.databinding.SampleCancelledOrdersItemBinding;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
 import com.talhachaudhry.jpharmaappfyp.utils.OrderDiffUtils;
