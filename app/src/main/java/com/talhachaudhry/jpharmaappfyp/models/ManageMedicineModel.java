@@ -3,21 +3,21 @@ package com.talhachaudhry.jpharmaappfyp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
-
 public class ManageMedicineModel implements Parcelable {
     String imagePath;
     String detail;
     int price;
     String mg;
     String name;
+    int stock;
 
-    public ManageMedicineModel(String imagePath, String detail, int price, String mg, String name) {
+    public ManageMedicineModel(String imagePath, String detail, int price, String mg, String name, int stock) {
         this.imagePath = imagePath;
         this.detail = detail;
         this.price = price;
         this.mg = mg;
         this.name = name;
+        this.stock = stock;
     }
 
     private ManageMedicineModel(Parcel in) {
@@ -26,6 +26,7 @@ public class ManageMedicineModel implements Parcelable {
         price = in.readInt();
         mg = in.readString();
         name = in.readString();
+        stock=in.readInt();
     }
 
     public ManageMedicineModel() {
@@ -69,6 +70,14 @@ public class ManageMedicineModel implements Parcelable {
         this.price = price;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public String getMg() {
         return mg;
     }
@@ -97,11 +106,18 @@ public class ManageMedicineModel implements Parcelable {
         parcel.writeInt(price);
         parcel.writeString(mg);
         parcel.writeString(name);
+        parcel.writeInt(stock);
     }
 
-    @NonNull
     @Override
     public String toString() {
-        return getName() + getMg() + getImagePath() + getDetail() + getPrice();
+        return "ManageMedicineModel{" +
+                "imagePath='" + imagePath + '\'' +
+                ", detail='" + detail + '\'' +
+                ", price=" + price +
+                ", mg='" + mg + '\'' +
+                ", name='" + name + '\'' +
+                ", stock=" + stock +
+                '}';
     }
 }

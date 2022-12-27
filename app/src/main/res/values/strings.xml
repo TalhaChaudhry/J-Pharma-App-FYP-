@@ -79,4 +79,9 @@
     <string name="reason">Reason :</string>
     <string name="edit">Edit</string>
     <string name="apply">Apply</string>
+    <string name="stock">Stock</string>
+    <string name="enter_the_stock">Enter the Stock</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="stock_available">Stock Available:</string>
 </resources>

@@ -47,12 +47,14 @@ public class EditOrderAdapter extends ListAdapter<OrderModel, RecyclerViewViewHo
         binding.orderIdTv.setText(getItem(position).getOrderId());
         binding.dateTv.setText(getItem(position).getDateAndTime());
         int total = 0;
-        for (CartModel cartModel : getItem(position).getOrdersList()) {
-            total += cartModel.getQuantity() * cartModel.getModel().getPrice();
+        if(getItem(position).getOrdersList()!=null){
+            for (CartModel cartModel : getItem(position).getOrdersList()) {
+                total += cartModel.getQuantity() * cartModel.getModel().getPrice();
+            }
+            binding.shopNameTv.setText(MessageFormat.format("{0}", total));
+            binding.viewDetails.setOnClickListener(view -> callbacks.onViewOrderClicked(getItem(holder.getAdapterPosition())));
+            binding.delete.setOnClickListener(view -> callbacks.onDeleteOrderClicked(getItem(holder.getAdapterPosition())));
+            binding.update.setOnClickListener(view -> callbacks.onUpdateOrderClicked(getItem(holder.getAdapterPosition())));
         }
-        binding.shopNameTv.setText(MessageFormat.format("{0}", total));
-        binding.viewDetails.setOnClickListener(view -> callbacks.onViewOrderClicked(getItem(holder.getAdapterPosition())));
-        binding.delete.setOnClickListener(view -> callbacks.onDeleteOrderClicked(getItem(holder.getAdapterPosition())));
-        binding.update.setOnClickListener(view -> callbacks.onUpdateOrderClicked(getItem(holder.getAdapterPosition())));
     }
 }

@@ -13,13 +13,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.talhachaudhry.jpharmaappfyp.R;
 import com.talhachaudhry.jpharmaappfyp.adapter.MedicineAdapter;
-import com.talhachaudhry.jpharmaappfyp.callbacks.OnItemClicked;
 import com.talhachaudhry.jpharmaappfyp.callbacks.OnViewMedicineDetail;
 import com.talhachaudhry.jpharmaappfyp.models.ManageMedicineModel;
-import com.talhachaudhry.jpharmaappfyp.models.MedicineModel;
 import com.talhachaudhry.jpharmaappfyp.databinding.ActivityPlaceOrderBinding;
 import com.talhachaudhry.jpharmaappfyp.view_models.ManageMedicineViewModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.PlaceOrderViewModel;
@@ -27,8 +26,6 @@ import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.AddToCartFragment;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.AnimationFragment;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.fragments.CartFragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedicineDetail {
@@ -46,7 +43,7 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
         setContentView(binding.getRoot());
         Objects.requireNonNull(getSupportActionBar()).hide();
         viewModel = new ViewModelProvider(this).get(ManageMedicineViewModel.class);
-        if (viewModel.getIsLoading()) {
+        if (Boolean.TRUE.equals(viewModel.getIsLoading().getValue())) {
             openAnimation();
         }
         placeOrderViewModel = new ViewModelProvider(this).get(PlaceOrderViewModel.class);
@@ -55,6 +52,18 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
                 binding.cartFrame.setVisibility(View.VISIBLE);
             } else {
                 binding.cartFrame.setVisibility(View.GONE);
+            }
+        });
+        placeOrderViewModel.getIsTaskPerformed().observe(this, aBoolean -> {
+            if (Boolean.TRUE.equals(viewModel.getIsLoading().getValue())) {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    viewModel.reload();
+                    if (!getSupportFragmentManager().isDestroyed()) {
+                        getSupportFragmentManager().popBackStackImmediate();
+                        openAnimation();
+                        Toast.makeText(this, "Updating Medicines", Toast.LENGTH_SHORT).show();
+                    }
+                }, 2000);
             }
         });
         binding.viewCartBtn.setOnClickListener(view ->
@@ -67,8 +76,6 @@ public class PlaceOrderActivity extends AppCompatActivity implements OnViewMedic
                 runOnUiThread(() -> getSupportFragmentManager().popBackStack());
             }
         });
-
-
         binding.searchEt.setThreshold(1);
         binding.backBtn.setOnClickListener(view -> onBackPressed());
         adapter = new MedicineAdapter(this, this);

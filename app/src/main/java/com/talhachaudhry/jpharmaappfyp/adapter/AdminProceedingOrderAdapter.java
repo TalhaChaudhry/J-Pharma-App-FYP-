@@ -42,6 +42,7 @@ public class AdminProceedingOrderAdapter extends ListAdapter<OrderModel, Recycle
         SampleProceedingItemBinding binding = (SampleProceedingItemBinding) holder.binding;
         binding.orderIdTv.setText(getItem(position).getOrderId());
         binding.dateTv.setText(getItem(position).getDateAndTime());
+        binding.shopAddressTv.setText(getItem(position).getUserModel().getAddress());
         int total = 0;
         for (CartModel cartModel : getItem(position).getOrdersList()) {
             total += cartModel.getQuantity() * cartModel.getModel().getPrice();
@@ -52,6 +53,8 @@ public class AdminProceedingOrderAdapter extends ListAdapter<OrderModel, Recycle
             binding.dispatchTv.setOnClickListener(view -> callback.onDispatchClicked(getItem(holder.getAdapterPosition())));
             binding.pendingOrderRv.setOnClickListener(view -> callback.onPendingClicked(getItem(holder.getAdapterPosition())));
         } else {
+            binding.shopAddressTag.setVisibility(View.GONE);
+            binding.shopNameTv.setVisibility(View.GONE);
             binding.dispatchTv.setVisibility(View.INVISIBLE);
             binding.pendingOrderRv.setVisibility(View.INVISIBLE);
             binding.cancelTv.setVisibility(View.INVISIBLE);

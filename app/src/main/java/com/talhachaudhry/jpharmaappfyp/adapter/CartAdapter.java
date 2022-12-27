@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.talhachaudhry.jpharmaappfyp.databinding.SampleItemCartBinding;
 
 
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
+import com.talhachaudhry.jpharmaappfyp.wholesaler.EditOrderActivity;
 
 import java.text.MessageFormat;
 
@@ -49,6 +51,8 @@ public class CartAdapter extends ListAdapter<CartModel, RecyclerViewViewHolderBo
                 load(Uri.parse(getItem(position).getModel().getImagePath())).
                 placeholder(R.drawable.sample_image).
                 into(binding.medicineImage);
+        if (context instanceof EditOrderActivity)
+            binding.delete.setVisibility(View.GONE);
         binding.delete.setOnClickListener(view -> callback.onDeleteClicked(getItem(holder.getAdapterPosition())));
         binding.quantity.addTextChangedListener(new TextWatcher() {
             @Override

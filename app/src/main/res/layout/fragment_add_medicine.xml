@@ -83,7 +83,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/edittext_style"
-                android:gravity="center"
+                android:gravity="start"
                 android:hint="@string/enter_the_medicine_name"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -110,7 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_style"
-                android:gravity="center"
+                android:gravity="start"
                 android:layout_marginTop="15dp"
                 android:hint="@string/enter_the_image_path"
                 android:padding="5dp"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/edittext_style"
-                android:gravity="center"
+                android:gravity="start"
                 android:hint="@string/enter_the_medicine_detail"
                 android:minLines="5"
                 android:padding="5dp"
@@ -166,7 +166,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_style"
-                android:gravity="center"
+                android:gravity="start"
                 android:hint="@string/enter_the_mg"
                 android:padding="5dp"
                 android:textColor="@color/black"
@@ -193,7 +193,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_style"
-                android:gravity="center"
+                android:gravity="start"
                 android:hint="@string/enter_the_price"
                 android:inputType="numberSigned"
                 android:padding="5dp"
@@ -203,6 +203,34 @@
                 app:layout_constraintEnd_toEndOf="@+id/mg_tv"
                 app:layout_constraintStart_toStartOf="@+id/mg_tv"
                 app:layout_constraintTop_toTopOf="@+id/price_tag" />
+
+            <TextView
+                android:id="@+id/stock_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/stock"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_tag" />
+
+            <EditText
+                android:id="@+id/stock_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_style"
+                android:gravity="start"
+                android:hint="@string/enter_the_stock"
+                android:inputType="numberSigned"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="@+id/stock_tag"
+                app:layout_constraintEnd_toEndOf="@+id/price_tv"
+                app:layout_constraintStart_toStartOf="@+id/price_tv"
+                app:layout_constraintTop_toTopOf="@+id/stock_tag" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

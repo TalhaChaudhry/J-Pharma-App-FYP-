@@ -37,6 +37,7 @@ public class AdminPendingOrdersAdapter extends ListAdapter<OrderModel, RecyclerV
         SamplePendingOrdersItemBinding binding = (SamplePendingOrdersItemBinding) holder.binding;
         binding.orderIdTv.setText(getItem(position).getOrderId());
         binding.dateTv.setText(getItem(position).getDateAndTime());
+        binding.shopAddressTv.setText(getItem(position).getUserModel().getAddress());
         int total = 0;
         for (CartModel cartModel : getItem(position).getOrdersList()) {
             total += cartModel.getQuantity() * cartModel.getModel().getPrice();

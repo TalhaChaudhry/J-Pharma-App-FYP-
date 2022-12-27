@@ -40,6 +40,7 @@ public class AdminDispatchedOrdersAdapter extends ListAdapter<OrderModel, Recycl
         SampleAdminDispatchedOrdersItemBinding binding = (SampleAdminDispatchedOrdersItemBinding) holder.binding;
         binding.orderIdTv.setText(getItem(position).getOrderId());
         binding.dateTv.setText(getItem(position).getDateAndTime());
+        binding.shopAddressTv.setText(getItem(position).getUserModel().getAddress());
         int total = 0;
         for (CartModel cartModel : getItem(position).getOrdersList()) {
             total += cartModel.getQuantity() * cartModel.getModel().getPrice();
@@ -50,6 +51,8 @@ public class AdminDispatchedOrdersAdapter extends ListAdapter<OrderModel, Recycl
             binding.completedTv.setOnClickListener(view -> callback.onCompleteClicked(getItem(holder.getAdapterPosition())));
             binding.proceedingTv.setOnClickListener(view -> callback.putInProceeding(getItem(holder.getAdapterPosition())));
         } else {
+            binding.shopAddressTag.setVisibility(View.GONE);
+            binding.shopNameTv.setVisibility(View.GONE);
             binding.proceedingTv.setVisibility(View.INVISIBLE);
             binding.completedTv.setVisibility(View.INVISIBLE);
             binding.cancelTv.setVisibility(View.INVISIBLE);

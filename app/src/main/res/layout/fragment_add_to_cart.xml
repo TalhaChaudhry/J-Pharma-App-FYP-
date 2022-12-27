@@ -150,10 +150,33 @@
                 android:gravity="left"
                 android:maxLines="50"
                 android:text="@string/medicine_name"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/price_tv"
                 app:layout_constraintStart_toStartOf="@+id/price_tv"
                 app:layout_constraintTop_toBottomOf="@+id/price_tv" />
+            <TextView
+                android:id="@+id/stock_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="@string/stock_available"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/stock_tv" />
+
+            <TextView
+                android:id="@+id/stock_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="left"
+                android:maxLines="50"
+                android:text="@string/medicine_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/detail_tv"
+                app:layout_constraintStart_toStartOf="@+id/detail_tv"
+                app:layout_constraintTop_toBottomOf="@+id/detail_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

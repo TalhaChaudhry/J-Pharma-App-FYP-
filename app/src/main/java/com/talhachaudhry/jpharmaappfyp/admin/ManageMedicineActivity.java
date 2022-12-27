@@ -44,7 +44,7 @@ public class ManageMedicineActivity extends AppCompatActivity implements OnViewM
         setContentView(binding.getRoot());
         Objects.requireNonNull(getSupportActionBar()).hide();
         viewModel = new ViewModelProvider(this).get(ManageMedicineViewModel.class);
-        if (viewModel.getIsLoading()) {
+        if (Boolean.TRUE.equals(viewModel.getIsLoading().getValue())) {
             openAnimation();
         }
         adapter = new ManageMedicineRecyclerAdapter(this, this);

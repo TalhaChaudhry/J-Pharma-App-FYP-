@@ -65,6 +65,15 @@
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/main_activity_menu.xml" value="0.21774193548387097" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/manage_medicine_activity_menu.xml" value="0.24114583333333334" />
         <entry key="..\:/JPharmaAppFYP/app/src/main/res/menu/sales_report_tool_bar.xml" value="0.24114583333333334" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/activity_login.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/activity_sign_up.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/fragment_add_medicine.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/fragment_add_to_cart.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/fragment_cart.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/manage_medicine_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/sample_admin_dispatched_orders_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/sample_pending_orders_item.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/Administrator/Android Studio Projects/J-Pharma-App-FYP-/app/src/main/res/layout/sample_proceeding_item.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>

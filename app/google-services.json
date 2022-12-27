@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "341451991468",
+    "firebase_url": "https://j-pharma-fyp-default-rtdb.firebaseio.com",
     "project_id": "j-pharma-fyp",
     "storage_bucket": "j-pharma-fyp.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "341451991468-o4n31c8afkkrso0kcesredvacuhph7q7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.talhachaudhry.jpharmaappfyp",
+            "certificate_hash": "513a7b09b453b9bac73ad2ae395ce5901a41a181"
+          }
+        },
+        {
+          "client_id": "341451991468-ouq3vkiqc90bphk684ovdlar523e5cph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.talhachaudhry.jpharmaappfyp",
+            "certificate_hash": "c384de741ceecd4eef33db16f067506caaca2db0"
+          }
+        },
         {
           "client_id": "341451991468-pu129u4amf23jaf8ll2rh0ok9det9gjl.apps.googleusercontent.com",
           "client_type": 3

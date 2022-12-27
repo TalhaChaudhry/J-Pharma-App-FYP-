@@ -22,7 +22,7 @@ public class ManageMedicineViewModel extends ViewModel {
     MutableLiveData<Boolean> allMedicinesSet;
     List<String> allMedicines = new ArrayList<>();
     FirebaseDatabase database;
-    boolean isLoading = true;
+    MutableLiveData<Boolean> isLoading;
     private static final String NODE_NAME = "Medicines";
 
     public LiveData<List<ManageMedicineModel>> getManageMedicineViewModelMutableLiveData() {
@@ -42,8 +42,25 @@ public class ManageMedicineViewModel extends ViewModel {
         return allMedicinesSet;
     }
 
-    public boolean getIsLoading() {
+    public LiveData<Boolean> getIsLoading() {
+        if (isLoading == null) {
+            isLoading = new MutableLiveData<>();
+            isLoading.setValue(true);
+        }
         return isLoading;
+    }
+
+    public void needReload() {
+        if (getIsLoading() != null)
+            isLoading.setValue(true);
+    }
+
+    public void reload() {
+        if (getManageMedicineViewModelMutableLiveData() != null) {
+            allMedicines = new ArrayList<>();
+            manageMedicineModelMutableLiveData.setValue(new ArrayList<>());
+            getFromDB();
+        }
     }
 
     public void addMedicine(ManageMedicineModel model) {
@@ -64,11 +81,11 @@ public class ManageMedicineViewModel extends ViewModel {
                                 values.put("detail", model.getDetail());
                                 values.put("mg", model.getMg());
                                 values.put("price", model.getPrice());
+                                values.put("stock", model.getStock());
                                 database.getReference()
                                         .child(NODE_NAME).
                                         child(Objects.requireNonNull(snapshot1.getKey()))
                                         .updateChildren(values);
-//                                        addOnCompleteListener(runnable -> replaceValue(model));
                             }
                         }
                     }
@@ -79,13 +96,6 @@ public class ManageMedicineViewModel extends ViewModel {
                     }
                 });
     }
-
-//    private void replaceValue(ManageMedicineModel model) {
-//        List<ManageMedicineModel> list = new ArrayList<>(Objects.requireNonNull(manageMedicineModelMutableLiveData.getValue()));
-//        int pos = list.indexOf(model);
-//        list.set(pos, model);
-//        manageMedicineModelMutableLiveData.setValue(list);
-//    }
 
     public void deleteMedicine(ManageMedicineModel model) {
         deleteFromDB(model);
@@ -162,7 +172,7 @@ public class ManageMedicineViewModel extends ViewModel {
                             }
                         }
                         if (getAllMedicinesSet() != null) {
-                            isLoading = false;
+                            isLoading.setValue(false);
                             allMedicinesSet.setValue(true);
                         }
                     }

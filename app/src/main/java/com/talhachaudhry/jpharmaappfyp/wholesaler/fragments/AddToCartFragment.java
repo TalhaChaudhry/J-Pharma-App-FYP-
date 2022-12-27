@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +55,27 @@ public class AddToCartFragment extends Fragment {
         binding.priceTv.setText(MessageFormat.format("{0}", model.getPrice()));
         binding.mgTv.setText(model.getMg());
         binding.detailTv.setText(model.getDetail());
+        binding.quantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // Do nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!String.valueOf(charSequence).trim().equals("") &&
+                        Integer.parseInt(String.valueOf(charSequence).trim()) > model.getStock()) {
+                    Toast.makeText(requireActivity(), "Quantity must be within stock range", Toast.LENGTH_SHORT).show();
+                    binding.quantity.setText("0");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // Do nothing
+            }
+        });
+        binding.stockTv.setText(MessageFormat.format("{0}", model.getStock()));
         Glide.with(requireActivity()).
                 load(Uri.parse(model.getImagePath())).
                 placeholder(R.drawable.sample_image).

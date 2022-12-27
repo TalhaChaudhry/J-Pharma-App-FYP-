@@ -18,6 +18,7 @@ import com.talhachaudhry.jpharmaappfyp.callbacks.CartCallback;
 import com.talhachaudhry.jpharmaappfyp.databinding.FragmentCartBinding;
 import com.talhachaudhry.jpharmaappfyp.models.CartModel;
 import com.talhachaudhry.jpharmaappfyp.models.OrderModel;
+import com.talhachaudhry.jpharmaappfyp.view_models.ManageMedicineViewModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.OrdersDetailViewModel;
 import com.talhachaudhry.jpharmaappfyp.view_models.PlaceOrderViewModel;
 import com.talhachaudhry.jpharmaappfyp.wholesaler.EditOrderActivity;
@@ -79,7 +80,9 @@ public class CartFragment extends Fragment implements CartCallback {
                     Toast.makeText(requireActivity(), "Order Edited", Toast.LENGTH_SHORT).show();
                 } else {
                     viewModel.placeOrder();
+                    ManageMedicineViewModel vm = new ViewModelProvider(requireActivity()).get(ManageMedicineViewModel.class);
                     Toast.makeText(requireActivity(), "Order Placed", Toast.LENGTH_SHORT).show();
+                    vm.needReload();
                 }
                 requireActivity().onBackPressed();
             } else {
@@ -91,6 +94,7 @@ public class CartFragment extends Fragment implements CartCallback {
 
     @Override
     public void onDeleteClicked(CartModel model) {
-        viewModel.removeFromCart(model);
+        if (requireActivity() instanceof PlaceOrderActivity)
+            viewModel.removeFromCart(model);
     }
 }

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,13 +32,11 @@ import com.talhachaudhry.jpharmaappfyp.databinding.ActivityLoginBinding;
 import java.util.Objects;
 
 public class Login extends AppCompatActivity {
-
     ActivityLoginBinding binding;
     ProgressDialog progressDialog;
     FirebaseAuth auth;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseDatabase database;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +59,23 @@ public class Login extends AppCompatActivity {
                 handleLogin()
         );
 
-        if (auth.getCurrentUser() != null) {
+        if (auth.getCurrentUser() != null && auth.getCurrentUser().isEmailVerified()) {
             startActivity(new Intent(Login.this, MainActivity.class));
         }
+
+        binding.forgetPassword.setOnClickListener(view -> {
+            if (!binding.EmailLogin.getText().toString().trim().equals("")) {
+                auth.sendPasswordResetEmail(binding.EmailLogin.getText().toString().trim()).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(this, "Password reset link send to email" +
+                                        binding.EmailLogin.getText().toString().trim()
+                                , Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(this, "Enter Email first", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         binding.signUpTv.setOnClickListener(v -> startActivity(new Intent(Login.this, SignUp.class)));
 
@@ -88,6 +101,7 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(Login.this, "Verify your Email to login", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
+                                binding.forgetPassword.setVisibility(View.VISIBLE);
                                 Toast.makeText(Login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
